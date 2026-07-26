@@ -1,5 +1,5 @@
 {
-  "_readme": "OFF EARTH catalog — 42 published Tapstitch products (trademark-risk pieces held out: NCU, Michigan, Hendrix, Marley, MJ, 2Pac x2, Goku, Rockets, MLK). PRICES ARE TEST PLACEHOLDERS. Set available:true per piece to enable purchase.",
+  "_readme": "OFF EARTH catalog — 35 published Tapstitch products (trademark-risk pieces held out: NCU, Michigan, Hendrix, Marley, MJ, 2Pac x2, Goku, Rockets, MLK). PRICES ARE TEST PLACEHOLDERS. Set available:true per piece to enable purchase. 2026-07-26 IP sweep: 7 more pieces held out after visual review (Elvis x2, Wolverine, UNC, Yankees, Warriors x2).",
   "drop": {
     "number": "001",
     "name": "FIRST CONTACT",
@@ -19,33 +19,9 @@
       "available": false
     },
     {
-      "id": "unisex-t-shirt",
-      "name": "Unisex T-shirt",
-      "piece": "Piece II",
-      "spec": "T-Shirt · Printed on demand",
-      "type": "T-Shirt",
-      "price": 35,
-      "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/2379e488c64041589ea0fae1a7b12380.png",
-      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/ce633ebd81454ea1ac6a9ea2443ea5f6.png",
-      "vendor": "tapstitch",
-      "available": false
-    },
-    {
-      "id": "unisex-crew-neck-270g-heavyweight-100-co",
-      "name": "Unisex Crew Neck 270g Heavyweight 100% Cotton Drop Shoulder Long Sleeve Shirt",
-      "piece": "Piece III",
-      "spec": "T-Shirt · Printed on demand",
-      "type": "T-Shirt",
-      "price": 45,
-      "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/a934bd1b04c34104b83aa5b646b5ea6c.png",
-      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/4273ead4a0b545569ef0cfe79d6b1344.png",
-      "vendor": "tapstitch",
-      "available": false
-    },
-    {
       "id": "streetwear-unisex-heavyweight-earth-tone",
       "name": "Streetwear Unisex Heavyweight Earth Tone Loose Fit FOG 100% Cotton Shorts",
-      "piece": "Piece IV",
+      "piece": "Piece II",
       "spec": "Shorts · Printed on demand",
       "type": "Shorts",
       "price": 49,
@@ -57,7 +33,7 @@
     {
       "id": "unisex-t-shirt-5120",
       "name": "Unisex T-shirt",
-      "piece": "Piece V",
+      "piece": "Piece III",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 35,
@@ -69,7 +45,7 @@
     {
       "id": "jesus-inspired-hoodie",
       "name": "‘Jesus’ Inspired Hoodie",
-      "piece": "Piece VI",
+      "piece": "Piece IV",
       "spec": "Hoodie · Printed on demand",
       "type": "Hoodie",
       "price": 79,
@@ -81,7 +57,7 @@
     {
       "id": "jesus-inspired",
       "name": "Jesus Inspired ✝️",
-      "piece": "Piece VII",
+      "piece": "Piece V",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -91,33 +67,9 @@
       "available": false
     },
     {
-      "id": "enzyme-washed-long-sleeve-t-shirt",
-      "name": "Enzyme Washed Long Sleeve T-shirt",
-      "piece": "Piece VIII",
-      "spec": "T-Shirt · Printed on demand",
-      "type": "T-Shirt",
-      "price": 45,
-      "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/5fcc9169127b442ea49b722866569292.png",
-      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/7d21e893c67a46febac5ad7d3726a1e2.png",
-      "vendor": "tapstitch",
-      "available": false
-    },
-    {
-      "id": "sunfade-fleeced-hoodie",
-      "name": "Sunfade Fleeced Hoodie",
-      "piece": "Piece IX",
-      "spec": "Hoodie · Printed on demand",
-      "type": "Hoodie",
-      "price": 79,
-      "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/1bac62714c0642c195bcdae8c4b3e9a5.png",
-      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/e8f4247c7ba4441fbcae17023cadb15d.png",
-      "vendor": "tapstitch",
-      "available": false
-    },
-    {
       "id": "master-plan-hoodie",
       "name": "‘Master Plan’ Hoodie",
-      "piece": "Piece X",
+      "piece": "Piece VI",
       "spec": "Hoodie · Printed on demand",
       "type": "Hoodie",
       "price": 79,
@@ -129,7 +81,7 @@
     {
       "id": "truth",
       "name": "‘TRUTH’",
-      "piece": "Piece XI",
+      "piece": "Piece VII",
       "spec": "Hoodie · Printed on demand",
       "type": "Hoodie",
       "price": 79,
@@ -141,7 +93,7 @@
     {
       "id": "bastet-essential-zip-up-hoodie",
       "name": "‘BASTET’ Essential Zip-up Hoodie",
-      "piece": "Piece XII",
+      "piece": "Piece VIII",
       "spec": "Hoodie · Printed on demand",
       "type": "Hoodie",
       "price": 85,
@@ -153,7 +105,7 @@
     {
       "id": "bastet",
       "name": "‘Bastet’",
-      "piece": "Piece XIII",
+      "piece": "Piece IX",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -163,21 +115,9 @@
       "available": false
     },
     {
-      "id": "oversize-snow-washed-t-shirt",
-      "name": "Oversize Snow Washed T-Shirt",
-      "piece": "Piece XIV",
-      "spec": "T-Shirt · Printed on demand",
-      "type": "T-Shirt",
-      "price": 35,
-      "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/4555be74d6f74dadb7350d80ee540f76.png",
-      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/28f904e3d3cb4bfdb2f9e3a424cda2c1.png",
-      "vendor": "tapstitch",
-      "available": false
-    },
-    {
       "id": "essential-sweatpants",
       "name": "Essential Sweatpants",
-      "piece": "Piece XV",
+      "piece": "Piece X",
       "spec": "Pants · Printed on demand",
       "type": "Pants",
       "price": 69,
@@ -189,7 +129,7 @@
     {
       "id": "buddha-tee",
       "name": "‘Buddha’ Tee",
-      "piece": "Piece XVI",
+      "piece": "Piece XI",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 35,
@@ -201,7 +141,7 @@
     {
       "id": "the-sun",
       "name": "‘The Sun’",
-      "piece": "Piece XVII",
+      "piece": "Piece XII",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -213,7 +153,7 @@
     {
       "id": "bitcoin-hoody",
       "name": "‘Bitcoin’ Hoody",
-      "piece": "Piece XVIII",
+      "piece": "Piece XIII",
       "spec": "Hoodie · Printed on demand",
       "type": "Hoodie",
       "price": 79,
@@ -225,7 +165,7 @@
     {
       "id": "untitled",
       "name": "‘Untitled’",
-      "piece": "Piece XIX",
+      "piece": "Piece XIV",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -237,7 +177,7 @@
     {
       "id": "official-off-earth-beanie",
       "name": "Official Off Earth Beanie",
-      "piece": "Piece XX",
+      "piece": "Piece XV",
       "spec": "Accessory · Printed on demand",
       "type": "Accessory",
       "price": 29,
@@ -249,7 +189,7 @@
     {
       "id": "black-king",
       "name": "Black King",
-      "piece": "Piece XXI",
+      "piece": "Piece XVI",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -261,7 +201,7 @@
     {
       "id": "yellow-brick-road",
       "name": "“Yellow Brick Road”",
-      "piece": "Piece XXII",
+      "piece": "Piece XVII",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -273,7 +213,7 @@
     {
       "id": "anime-black-queen-inspired",
       "name": "Anime Black Queen Inspired",
-      "piece": "Piece XXIII",
+      "piece": "Piece XVIII",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -285,7 +225,7 @@
     {
       "id": "my-kat-t-shirt",
       "name": "“My Kat” T-Shirt",
-      "piece": "Piece XXIV",
+      "piece": "Piece XIX",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 35,
@@ -297,7 +237,7 @@
     {
       "id": "aliens-off-earth",
       "name": "Aliens Off Earth ✌🏽",
-      "piece": "Piece XXV",
+      "piece": "Piece XX",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -309,7 +249,7 @@
     {
       "id": "fleeced-high-neck-hoodie",
       "name": "Fleeced High Neck Hoodie",
-      "piece": "Piece XXVI",
+      "piece": "Piece XXI",
       "spec": "Hoodie · Printed on demand",
       "type": "Hoodie",
       "price": 85,
@@ -321,7 +261,7 @@
     {
       "id": "brokenhearted-queen",
       "name": "Brokenhearted Queen 👸🏽💔",
-      "piece": "Piece XXVII",
+      "piece": "Piece XXII",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -333,7 +273,7 @@
     {
       "id": "brokenhearted-king-streetwear-unisex-hea",
       "name": "Brokenhearted King 💔 Streetwear Unisex Heavy Crew",
-      "piece": "Piece XXVIII",
+      "piece": "Piece XXIII",
       "spec": "Sweatshirt · Printed on demand",
       "type": "Sweatshirt",
       "price": 65,
@@ -345,7 +285,7 @@
     {
       "id": "broken-hearted-unisex-fleece-joggers",
       "name": "Broken Hearted Unisex Fleece Joggers 💔",
-      "piece": "Piece XXIX",
+      "piece": "Piece XXIV",
       "spec": "Pants · Printed on demand",
       "type": "Pants",
       "price": 69,
@@ -357,7 +297,7 @@
     {
       "id": "aliens-valentines-day-tee",
       "name": "Aliens Valentine’s Day Tee",
-      "piece": "Piece XXX",
+      "piece": "Piece XXV",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 35,
@@ -369,7 +309,7 @@
     {
       "id": "2019-420-tee-astro-dex",
       "name": "2019 420 Tee (Astro Dex)",
-      "piece": "Piece XXXI",
+      "piece": "Piece XXVI",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 35,
@@ -381,7 +321,7 @@
     {
       "id": "aliens-off-earth-9312",
       "name": "Aliens Off Earth 👽",
-      "piece": "Piece XXXII",
+      "piece": "Piece XXVII",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -393,7 +333,7 @@
     {
       "id": "d-stars-1",
       "name": "D Stars #1",
-      "piece": "Piece XXXIII",
+      "piece": "Piece XXVIII",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -405,7 +345,7 @@
     {
       "id": "houston-snowfall-2",
       "name": "Houston Snowfall ❄️ #2",
-      "piece": "Piece XXXIV",
+      "piece": "Piece XXIX",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -417,7 +357,7 @@
     {
       "id": "d-stars-1-4576",
       "name": "D Stars #1",
-      "piece": "Piece XXXV",
+      "piece": "Piece XXX",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -427,33 +367,9 @@
       "available": false
     },
     {
-      "id": "golden-state-of-mind-2",
-      "name": "Golden State Of Mind #2",
-      "piece": "Piece XXXVI",
-      "spec": "T-Shirt · Printed on demand",
-      "type": "T-Shirt",
-      "price": 39,
-      "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/29be40d2f7934612987d29e5dd3e9ac8.png",
-      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/60ee2b553d864585a0239ae90db8e3b0.png",
-      "vendor": "tapstitch",
-      "available": false
-    },
-    {
-      "id": "golden-state-of-mind",
-      "name": "Golden State Of Mind",
-      "piece": "Piece XXXVII",
-      "spec": "T-Shirt · Printed on demand",
-      "type": "T-Shirt",
-      "price": 39,
-      "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/14cfa9affd8149c582e472649489b974.png",
-      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/e4f0807b9a9e4041b7e22b387972c17e.png",
-      "vendor": "tapstitch",
-      "available": false
-    },
-    {
       "id": "houston-snow-edition",
       "name": "Houston Snow Edition",
-      "piece": "Piece XXXVIII",
+      "piece": "Piece XXXI",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -465,7 +381,7 @@
     {
       "id": "oversize-fleeced-hoodie",
       "name": "Oversize Fleeced Hoodie",
-      "piece": "Piece XXXIX",
+      "piece": "Piece XXXII",
       "spec": "Hoodie · Printed on demand",
       "type": "Hoodie",
       "price": 79,
@@ -477,7 +393,7 @@
     {
       "id": "egyptian-head",
       "name": "Egyptian Head",
-      "piece": "Piece XL",
+      "piece": "Piece XXXIII",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 39,
@@ -489,7 +405,7 @@
     {
       "id": "vintage-wash-frayed-fleece-hoodie-360-gs",
       "name": "Vintage Wash Frayed Fleece Hoodie - 360 GSM",
-      "piece": "Piece XLI",
+      "piece": "Piece XXXIV",
       "spec": "Hoodie · Printed on demand",
       "type": "Hoodie",
       "price": 89,
@@ -501,7 +417,7 @@
     {
       "id": "oversize-snow-washed-t-shirt-5536",
       "name": "Oversize Snow Washed T-Shirt",
-      "piece": "Piece XLII",
+      "piece": "Piece XXXV",
       "spec": "T-Shirt · Printed on demand",
       "type": "T-Shirt",
       "price": 35,

@@ -135,7 +135,12 @@
   .modal-back.open { display:flex; }
   .modal { background:#16062a; border:1px solid rgba(178,102,255,.4); border-radius:20px; max-width:420px; width:100%; max-height:92vh; overflow-y:auto; position:relative; box-shadow:0 30px 90px rgba(0,0,0,.7); }
   .modal .close { position:absolute; top:12px; right:12px; z-index:2; width:34px; height:34px; border-radius:17px; border:none; background:rgba(0,0,0,.55); color:#fff; font-size:16px; cursor:pointer; }
-  .modal .m-img { width:100%; aspect-ratio:1/1.05; background:#fff center/cover no-repeat; border-radius:20px 20px 0 0; transition:transform .25s; }
+  .m-flipbox { perspective: 1400px; }
+  .m-flipcard { position:relative; width:100%; aspect-ratio:1/1.05; transform-style:preserve-3d; transition:transform .65s cubic-bezier(.3,1.25,.35,1); }
+  .m-flipcard.flipped { transform: rotateY(180deg); }
+  .m-face { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; background:#f4f2f7 center/cover no-repeat; border-radius:20px 20px 0 0; }
+  .m-face.back { transform: rotateY(180deg); }
+  @media (prefers-reduced-motion: reduce) { .m-flipcard { transition:none; } }
   .modal .m-flip { display:block; margin:14px auto 0; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:2px; padding:9px 20px; border-radius:999px; border:1.5px solid #ff6b9d; background:none; color:#ff6b9d; cursor:pointer; }
   .modal .m-body { padding:18px 24px 26px; text-align:center; }
   .modal .m-piece { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:4px; color:#b266ff; text-transform:uppercase; }
@@ -228,7 +233,12 @@
 <div class="modal-back" id="modal-back">
   <div class="modal" role="dialog" aria-modal="true">
     <button class="close" id="m-close" aria-label="Close">✕</button>
-    <div class="m-img" id="m-img"></div>
+    <div class="m-flipbox">
+      <div class="m-flipcard" id="m-flipcard">
+        <div class="m-face front" id="m-face-front"></div>
+        <div class="m-face back" id="m-face-back"></div>
+      </div>
+    </div>
     <div class="m-body">
       <button class="m-flip" id="m-flip">🔄 SEE BACK</button>
       <div style="height:14px"></div>
@@ -300,13 +310,12 @@ fetch('products.json')
   .catch(() => { document.getElementById('pieces').innerHTML = '<p style="color:#a98cd6">Drop loading…</p>'; });
 
 // ── Product modal with front/back flip ──
-let mProduct = null, mSide = 0;
+let mProduct = null;
 const mBack = document.getElementById('modal-back');
-function setSide(side) {
-  mSide = side;
-  const img = document.getElementById('m-img');
-  img.style.backgroundImage = `url('${side === 0 ? mProduct.image : mProduct.image2}')`;
-  document.getElementById('m-flip').textContent = side === 0 ? '🔄 SEE BACK' : '🔄 SEE FRONT';
+const flipcard = document.getElementById('m-flipcard');
+function setFlipped(flipped) {
+  flipcard.classList.toggle('flipped', flipped);
+  document.getElementById('m-flip').textContent = flipped ? '🔄 SEE FRONT' : '🔄 SEE BACK';
 }
 function openModal(p) {
   mProduct = p;
@@ -315,14 +324,17 @@ function openModal(p) {
   document.getElementById('m-spec').textContent = p.spec;
   document.getElementById('m-price').textContent = '$' + p.price;
   document.getElementById('m-flip').style.display = p.image2 ? 'block' : 'none';
-  setSide(0);
+  document.getElementById('m-face-front').style.backgroundImage = `url('${p.image}')`;
+  document.getElementById('m-face-back').style.backgroundImage = p.image2 ? `url('${p.image2}')` : 'none';
+  if (p.image2) { const pre = new Image(); pre.src = p.image2; }  // warm the cache before first flip
+  setFlipped(false);
   mBack.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeModal() { mBack.classList.remove('open'); document.body.style.overflow = ''; }
 document.getElementById('m-close').addEventListener('click', closeModal);
 document.getElementById('m-cta').addEventListener('click', closeModal);
-document.getElementById('m-flip').addEventListener('click', () => setSide(mSide === 0 ? 1 : 0));
+document.getElementById('m-flip').addEventListener('click', () => setFlipped(!flipcard.classList.contains('flipped')));
 mBack.addEventListener('click', e => { if (e.target === mBack) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 

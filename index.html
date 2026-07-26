@@ -8,6 +8,12 @@
 <meta property="og:title" content="OFF EARTH — Pigments of the Imagination">
 <meta property="og:description" content="Limited streetwear drops + a community app where creators keep 70%. Drop 001 loading.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://offearthllc.com/">
+<meta property="og:image" content="https://offearthllc.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OFF EARTH — Pigments of the Imagination">
+<meta name="twitter:description" content="Limited streetwear drops + a community app where creators keep 70%.">
+<meta name="twitter:image" content="https://offearthllc.com/assets/og.png">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Archivo+Black&family=Cormorant+Garamond:ital@1&family=Space+Mono&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -79,6 +85,65 @@
 
   footer { padding:30px 24px 54px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:'Space Mono',monospace; color:#a98cd6; font-size:10px; letter-spacing:3px; border-top:1px solid rgba(255,255,255,.15); text-transform:uppercase; }
   @media (max-width:760px){ .app-band{grid-template-columns:1fr} .phone{width:170px;height:340px} }
+  /* ── FUN LAYER ── */
+  .piece .frame { transition: transform .22s ease, border-color .3s, box-shadow .3s; }
+  .piece:hover .frame { transform: rotate(-1.4deg) translateY(-7px) scale(1.025); }
+  .piece:nth-child(even):hover .frame { transform: rotate(1.4deg) translateY(-7px) scale(1.025); }
+  .piece .canvas { transition: background-image .15s; }
+
+  #ufo { position:absolute; top:18%; left:-80px; font-size:34px; z-index:3; cursor:pointer; user-select:none;
+         animation: flyby 19s linear infinite; filter: drop-shadow(0 0 10px rgba(178,102,255,.9)); }
+  @keyframes flyby {
+    0% { left:-80px; transform: translateY(0) rotate(6deg); }
+    12% { transform: translateY(-26px) rotate(-5deg); }
+    25% { transform: translateY(10px) rotate(6deg); }
+    37% { transform: translateY(-18px) rotate(-4deg); }
+    50% { left:calc(100% + 80px); transform: translateY(0) rotate(5deg); }
+    100% { left:calc(100% + 80px); }
+  }
+  #ufo.loop { animation: flyby 19s linear infinite, loopdeloop .9s ease; }
+  @keyframes loopdeloop { from { rotate: 0deg; scale: 1; } 50% { rotate: 180deg; scale: 1.6; } to { rotate: 360deg; scale: 1; } }
+
+  .modal-back.open .modal { animation: beamin .34s cubic-bezier(.2,1.4,.4,1); }
+  @keyframes beamin {
+    from { transform: translateY(60px) scale(.6); opacity: 0; filter: brightness(2.2); }
+    to { transform: translateY(0) scale(1); opacity: 1; filter: brightness(1); }
+  }
+
+  .confetti { position:fixed; z-index:99; pointer-events:none; font-size:20px; animation: confetti-fall linear forwards; }
+  @keyframes confetti-fall {
+    from { transform: translateY(0) rotate(0deg); opacity: 1; }
+    to { transform: translateY(105vh) rotate(720deg); opacity: .1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #ufo, .confetti { display:none !important; }
+    .modal-back.open .modal { animation: none; }
+    .piece:hover .frame { transform: none; }
+  }
+
+  /* ── Category filters ── */
+  .filters { display:flex; gap:10px; flex-wrap:wrap; margin:26px 0 6px; }
+  .fbtn { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:2px; padding:9px 18px; border-radius:999px; border:1.5px solid rgba(255,255,255,.35); background:none; color:#dcc8f7; cursor:pointer; }
+  .fbtn:hover { border-color:#ff6b9d; color:#ff6b9d; }
+  .fbtn.active { background:linear-gradient(90deg,#ff6b6b,#ff8e53,#ff6b9d); border-color:transparent; color:#fff; font-weight:700; }
+
+  .piece { cursor:pointer; }
+
+  /* ── Product modal ── */
+  .modal-back { position:fixed; inset:0; background:rgba(7,3,14,.82); backdrop-filter:blur(6px); z-index:50; display:none; align-items:center; justify-content:center; padding:20px; }
+  .modal-back.open { display:flex; }
+  .modal { background:#16062a; border:1px solid rgba(178,102,255,.4); border-radius:20px; max-width:420px; width:100%; max-height:92vh; overflow-y:auto; position:relative; box-shadow:0 30px 90px rgba(0,0,0,.7); }
+  .modal .close { position:absolute; top:12px; right:12px; z-index:2; width:34px; height:34px; border-radius:17px; border:none; background:rgba(0,0,0,.55); color:#fff; font-size:16px; cursor:pointer; }
+  .modal .m-img { width:100%; aspect-ratio:1/1.05; background:#fff center/cover no-repeat; border-radius:20px 20px 0 0; transition:transform .25s; }
+  .modal .m-flip { display:block; margin:14px auto 0; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:2px; padding:9px 20px; border-radius:999px; border:1.5px solid #ff6b9d; background:none; color:#ff6b9d; cursor:pointer; }
+  .modal .m-body { padding:18px 24px 26px; text-align:center; }
+  .modal .m-piece { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:4px; color:#b266ff; text-transform:uppercase; }
+  .modal .m-name { font-family:'Archivo Black'; font-size:22px; margin:8px 0 4px; color:#fff; }
+  .modal .m-spec { font-size:11px; letter-spacing:2px; color:#8f80ab; text-transform:uppercase; }
+  .modal .m-price { font-family:'Archivo Black'; font-size:26px; color:#ff6b9d; margin:14px 0 4px; }
+  .modal .m-status { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:3px; color:#ffd166; margin-bottom:16px; }
+  .modal .m-cta { display:inline-block; }
 </style>
 </head>
 <body>
@@ -104,6 +169,7 @@
     <section id="drop">
       <div class="kicker" id="drop-kicker">// Collection Nº 001 — Limited · Numbered · Never Restocked</div>
       <h2 id="drop-title">DROP 001</h2>
+      <div class="filters" id="filters"><!-- rendered from catalog --></div>
       <div class="pieces" id="pieces"><!-- rendered from products.json --></div>
     </section>
   </div>
@@ -145,7 +211,11 @@
     <section id="join" class="waitlist">
       <div class="kicker">// Drop 001 is limited — the list is the line</div>
       <h2>GET ON THE LIST</h2>
-      <form id="waitlist-form" action="mailto:matthewhilljr56@gmail.com" method="post" enctype="text/plain">
+      <form id="waitlist-form" action="https://formsubmit.co/matthewhilljr56@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="🛸 OFF EARTH waitlist signup">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://offearthllc.com/?joined=1">
         <input type="email" name="email" id="email" placeholder="your@email.com" required>
         <button class="btn btn-primary" type="submit">COUNT ME IN</button>
       </form>
@@ -155,37 +225,148 @@
 
   <footer><span>OFF EARTH LLC © 2026</span><span><a href="/privacy.html" style="color:inherit">PRIVACY</a> · <a href="/terms.html" style="color:inherit">TERMS</a></span><span>HOUSTON → THE COSMOS</span></footer>
 
+<div class="modal-back" id="modal-back">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" id="m-close" aria-label="Close">✕</button>
+    <div class="m-img" id="m-img"></div>
+    <div class="m-body">
+      <button class="m-flip" id="m-flip">🔄 SEE BACK</button>
+      <div style="height:14px"></div>
+      <div class="m-piece" id="m-piece"></div>
+      <div class="m-name" id="m-name"></div>
+      <div class="m-spec" id="m-spec"></div>
+      <div class="m-price" id="m-price"></div>
+      <div class="m-status" id="m-status">DROP 001 LOADING — WAITLIST GETS FIRST ACCESS</div>
+      <a class="btn btn-primary m-cta" href="#join" id="m-cta">JOIN THE WAITLIST</a>
+    </div>
+  </div>
+</div>
+
 <script>
 // ── Catalog: the site renders whatever products.json contains ──
+let PRODUCTS = [];
+const FILTER_GROUPS = {
+  'ALL': () => true,
+  'TEES': p => /t-shirt|sweatshirt/i.test(p.type || ''),
+  'HOODIES': p => /hoodie/i.test(p.type || ''),
+  'BOTTOMS': p => /pants|shorts/i.test(p.type || ''),
+  'MORE': p => /accessory|women/i.test(p.type || ''),
+};
+
+function renderGrid(filterName) {
+  const grid = document.getElementById('pieces');
+  const test = FILTER_GROUPS[filterName] || FILTER_GROUPS.ALL;
+  const items = PRODUCTS.map((p, i) => ({ p, i })).filter(({ p }) => test(p));
+  grid.innerHTML = items.map(({ p, i }) => `
+    <div class="piece" data-i="${i}">
+      <div class="frame">
+        ${p.available ? '' : '<div class="badge">COMING SOON</div>'}
+        <div class="canvas" style="${p.image ? `background-image:url('${p.image}')` : `background:${p.gradient}`}">
+          ${p.image ? '' : `<span>${p.piece.toUpperCase()}</span>`}
+        </div>
+      </div>
+      <div class="label">
+        <div class="t">${p.name}<small>${p.spec}</small></div>
+        <div class="price">$${p.price}</div>
+      </div>
+    </div>`).join('');
+  grid.querySelectorAll('.piece').forEach(el => {
+    const p = PRODUCTS[+el.dataset.i];
+    el.addEventListener('click', () => openModal(p));
+    // fun: hover shows the back of the garment
+    if (p.image2) {
+      const cv = el.querySelector('.canvas');
+      el.addEventListener('mouseenter', () => { cv.style.backgroundImage = `url('${p.image2}')`; });
+      el.addEventListener('mouseleave', () => { cv.style.backgroundImage = `url('${p.image}')`; });
+    }
+  });
+}
+
 fetch('products.json')
   .then(r => r.json())
   .then(cat => {
     document.getElementById('drop-title').textContent = 'DROP ' + cat.drop.number + ' — ' + cat.drop.name;
-    const grid = document.getElementById('pieces');
-    grid.innerHTML = cat.products.map(p => `
-      <div class="piece">
-        <div class="frame">
-          ${p.available ? '' : '<div class="badge">COMING SOON</div>'}
-          <div class="canvas" style="${p.image ? `background-image:url('${p.image}')` : `background:${p.gradient}`}">
-            ${p.image ? '' : `<span>${p.piece.toUpperCase()}</span>`}
-          </div>
-        </div>
-        <div class="label">
-          <div class="t">${p.name}<small>${p.spec}</small></div>
-          <div class="price">$${p.price}</div>
-        </div>
-      </div>`).join('');
+    PRODUCTS = cat.products;
+    const bar = document.getElementById('filters');
+    bar.innerHTML = Object.keys(FILTER_GROUPS).map((f, i) =>
+      `<button class="fbtn${i === 0 ? ' active' : ''}" data-f="${f}">${f}</button>`).join('');
+    bar.querySelectorAll('.fbtn').forEach(b => b.addEventListener('click', () => {
+      bar.querySelectorAll('.fbtn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      renderGrid(b.dataset.f);
+    }));
+    renderGrid('ALL');
   })
   .catch(() => { document.getElementById('pieces').innerHTML = '<p style="color:#a98cd6">Drop loading…</p>'; });
+
+// ── Product modal with front/back flip ──
+let mProduct = null, mSide = 0;
+const mBack = document.getElementById('modal-back');
+function setSide(side) {
+  mSide = side;
+  const img = document.getElementById('m-img');
+  img.style.backgroundImage = `url('${side === 0 ? mProduct.image : mProduct.image2}')`;
+  document.getElementById('m-flip').textContent = side === 0 ? '🔄 SEE BACK' : '🔄 SEE FRONT';
+}
+function openModal(p) {
+  mProduct = p;
+  document.getElementById('m-piece').textContent = p.piece + ' · ' + (p.vendor === 'tapstitch' ? 'printed on demand' : p.vendor);
+  document.getElementById('m-name').textContent = p.name;
+  document.getElementById('m-spec').textContent = p.spec;
+  document.getElementById('m-price').textContent = '$' + p.price;
+  document.getElementById('m-flip').style.display = p.image2 ? 'block' : 'none';
+  setSide(0);
+  mBack.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() { mBack.classList.remove('open'); document.body.style.overflow = ''; }
+document.getElementById('m-close').addEventListener('click', closeModal);
+document.getElementById('m-cta').addEventListener('click', closeModal);
+document.getElementById('m-flip').addEventListener('click', () => setSide(mSide === 0 ? 1 : 0));
+mBack.addEventListener('click', e => { if (e.target === mBack) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── Fun: the UFO ──
+(() => {
+  const heroEl = document.querySelector('.hero');
+  const ufo = document.createElement('div');
+  ufo.id = 'ufo'; ufo.textContent = '🛸'; ufo.title = 'click me';
+  ufo.addEventListener('click', () => {
+    ufo.classList.remove('loop'); void ufo.offsetWidth; ufo.classList.add('loop');
+    starBurst(ufo.getBoundingClientRect());
+  });
+  heroEl.appendChild(ufo);
+})();
+
+// ── Fun: star confetti ──
+function starBurst(rect) {
+  const chars = ['✦', '★', '🛸', '✧', '⭐'];
+  const cx = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
+  for (let i = 0; i < 36; i++) {
+    const s = document.createElement('div');
+    s.className = 'confetti';
+    s.textContent = chars[Math.floor(Math.random() * chars.length)];
+    s.style.left = (cx + (Math.random() - 0.5) * 320) + 'px';
+    s.style.top = (rect ? rect.top : 80) + 'px';
+    s.style.color = ['#ff6b9d', '#b266ff', '#ff8e53', '#ffffff'][i % 4];
+    s.style.animationDuration = (1.6 + Math.random() * 1.6) + 's';
+    s.style.fontSize = (13 + Math.random() * 16) + 'px';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 3400);
+  }
+}
+
+// ── Waitlist success (returning from FormSubmit redirect) ──
+if (new URLSearchParams(location.search).has('joined')) {
+  document.getElementById('ok-msg').style.display = 'block';
+  starBurst(null);
+  setTimeout(() => document.getElementById('join').scrollIntoView({ behavior: 'smooth' }), 300);
+  history.replaceState(null, '', '/');
+}
 
 // ── Ticker ──
 const T = 'PIGMENTS OF THE IMAGINATION ★ DROP 001: FIRST CONTACT ★ WEARABLE ART FOR THE COSMIC GENERATION ★ NO RESTOCKS ★ CREATORS KEEP 70% ★ ';
 document.getElementById('ticker-text').textContent = T + T;
-
-// ── Waitlist: swap the form action to Formspree when set up; mailto fallback for now ──
-document.getElementById('waitlist-form').addEventListener('submit', () => {
-  document.getElementById('ok-msg').style.display = 'block';
-});
 
 // ── Purple Matrix rain ──
 const canvas = document.getElementById('rain');

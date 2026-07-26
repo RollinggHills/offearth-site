@@ -11,10 +11,11 @@
       "name": "All-Over Print Split Slide Cami Bodycon Dress",
       "piece": "Piece I",
       "spec": "Women · Printed on demand",
+      "type": "Women",
       "price": 55,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/0a638b26a7f6409f9b69cc4ff3ab54dd.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/0d911db1597544c4acee8c9c2e32a0a1.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1348887097255387136",
       "available": false
     },
     {
@@ -22,10 +23,11 @@
       "name": "Unisex T-shirt",
       "piece": "Piece II",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 35,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/2379e488c64041589ea0fae1a7b12380.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/ce633ebd81454ea1ac6a9ea2443ea5f6.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1347207555809796096",
       "available": false
     },
     {
@@ -33,10 +35,11 @@
       "name": "Unisex Crew Neck 270g Heavyweight 100% Cotton Drop Shoulder Long Sleeve Shirt",
       "piece": "Piece III",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 45,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/a934bd1b04c34104b83aa5b646b5ea6c.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/4273ead4a0b545569ef0cfe79d6b1344.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1347176872823480320",
       "available": false
     },
     {
@@ -44,10 +47,11 @@
       "name": "Streetwear Unisex Heavyweight Earth Tone Loose Fit FOG 100% Cotton Shorts",
       "piece": "Piece IV",
       "spec": "Shorts · Printed on demand",
+      "type": "Shorts",
       "price": 49,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/280d188ffd02486580f4ce8367083453.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/463858d5c6024cfdab7cf11df9ab79f7.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1346668580011499520",
       "available": false
     },
     {
@@ -55,10 +59,11 @@
       "name": "Unisex T-shirt",
       "piece": "Piece V",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 35,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/e9042356ba104a56ad566772048e8bd0.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/c7d81a5f3d6b48e59f88fa95f6c145f9.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1345721546119045120",
       "available": false
     },
     {
@@ -66,10 +71,11 @@
       "name": "‘Jesus’ Inspired Hoodie",
       "piece": "Piece VI",
       "spec": "Hoodie · Printed on demand",
+      "type": "Hoodie",
       "price": 79,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/431305e919294c438d846f348127089f.png",
+      "image2": null,
       "vendor": "tapstitch",
-      "tapstitchId": "1345716750733533184",
       "available": false
     },
     {
@@ -77,10 +83,11 @@
       "name": "Jesus Inspired ✝️",
       "piece": "Piece VII",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/7f0c4d1a89c44875a9ede7c8cb8e9832.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/012de87467ad48a99391835165b8bd4f.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1345715606678396928",
       "available": false
     },
     {
@@ -88,10 +95,11 @@
       "name": "Enzyme Washed Long Sleeve T-shirt",
       "piece": "Piece VIII",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 45,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/5fcc9169127b442ea49b722866569292.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/7d21e893c67a46febac5ad7d3726a1e2.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1344258213629124608",
       "available": false
     },
     {
@@ -99,10 +107,11 @@
       "name": "Sunfade Fleeced Hoodie",
       "piece": "Piece IX",
       "spec": "Hoodie · Printed on demand",
+      "type": "Hoodie",
       "price": 79,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/1bac62714c0642c195bcdae8c4b3e9a5.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/e8f4247c7ba4441fbcae17023cadb15d.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1343142817626841088",
       "available": false
     },
     {
@@ -110,10 +119,11 @@
       "name": "‘Master Plan’ Hoodie",
       "piece": "Piece X",
       "spec": "Hoodie · Printed on demand",
+      "type": "Hoodie",
       "price": 79,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/7895c3ff20174c008f07a17a14546455.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/be2a256514a5425cbd86ca073bd9494f.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1343051636242898944",
       "available": false
     },
     {
@@ -121,10 +131,11 @@
       "name": "‘TRUTH’",
       "piece": "Piece XI",
       "spec": "Hoodie · Printed on demand",
+      "type": "Hoodie",
       "price": 79,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/8aefa23f2f44426ea0a659eb69c61e06.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/35f711f6c35a4a42af073ebb955029f5.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1342481241244639232",
       "available": false
     },
     {
@@ -132,10 +143,11 @@
       "name": "‘BASTET’ Essential Zip-up Hoodie",
       "piece": "Piece XII",
       "spec": "Hoodie · Printed on demand",
+      "type": "Hoodie",
       "price": 85,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/3199611a0d154973ade4e675d78859fc.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/80f2a9464d4445f18c23c80be217a931.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1342339755073024000",
       "available": false
     },
     {
@@ -143,10 +155,11 @@
       "name": "‘Bastet’",
       "piece": "Piece XIII",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/c6116e04bb6e4b658f09dd0ca4f28228.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/b0c5ca7c94534cb8b2a70bca37237c1c.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1342224446420885504",
       "available": false
     },
     {
@@ -154,10 +167,11 @@
       "name": "Oversize Snow Washed T-Shirt",
       "piece": "Piece XIV",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 35,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/4555be74d6f74dadb7350d80ee540f76.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/28f904e3d3cb4bfdb2f9e3a424cda2c1.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1342076506196881408",
       "available": false
     },
     {
@@ -165,10 +179,11 @@
       "name": "Essential Sweatpants",
       "piece": "Piece XV",
       "spec": "Pants · Printed on demand",
+      "type": "Pants",
       "price": 69,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/626e63c075a54f0696a8f5f7973a083a.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/2e52d8377a064dcfaec406ba0eb0a13a.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1342040843120467968",
       "available": false
     },
     {
@@ -176,10 +191,11 @@
       "name": "‘Buddha’ Tee",
       "piece": "Piece XVI",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 35,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/841cc9a5cc0142c286c9e5d56cf663c2.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/10a0a6b2d22e417bb7e98a67cb11995a.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1341615466514407424",
       "available": false
     },
     {
@@ -187,10 +203,11 @@
       "name": "‘The Sun’",
       "piece": "Piece XVII",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/95f0b88ef6bc49249a8ef9aca8d8f5d4.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/ce14eec01c4844e9aca4be669e934008.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1341510290239610880",
       "available": false
     },
     {
@@ -198,10 +215,11 @@
       "name": "‘Bitcoin’ Hoody",
       "piece": "Piece XVIII",
       "spec": "Hoodie · Printed on demand",
+      "type": "Hoodie",
       "price": 79,
       "image": "https://files.tapstitch.com/material/style/item_image/style/item_image/20241115/image-v1731642889-0286.jpg",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/4e739f6e63a34e6cbcc83079de8054dc.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1339122358237138944",
       "available": false
     },
     {
@@ -209,10 +227,11 @@
       "name": "‘Untitled’",
       "piece": "Piece XIX",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/60b1e1747e3d4dddabc4cc8f4dda4dc8.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/7f3950c5db7546d69fa00dd816506a5e.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1338927079193972736",
       "available": false
     },
     {
@@ -220,10 +239,11 @@
       "name": "Official Off Earth Beanie",
       "piece": "Piece XX",
       "spec": "Accessory · Printed on demand",
+      "type": "Accessory",
       "price": 29,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/68d0ee6ca82247bfbc50fa46261ae336.png",
+      "image2": null,
       "vendor": "tapstitch",
-      "tapstitchId": "1338925542132551680",
       "available": false
     },
     {
@@ -231,10 +251,11 @@
       "name": "Black King",
       "piece": "Piece XXI",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/d8af7e73df134480a22a6b57470ef5c6.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/a68ef21e766247f592150050c44183f2.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1335554970052857856",
       "available": false
     },
     {
@@ -242,10 +263,11 @@
       "name": "“Yellow Brick Road”",
       "piece": "Piece XXII",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/cb0288a62080469e8b98391fc19ee1eb.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/0fadea55e60542018029b4c3181a2062.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1334922104642088960",
       "available": false
     },
     {
@@ -253,10 +275,11 @@
       "name": "Anime Black Queen Inspired",
       "piece": "Piece XXIII",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/8b5fb65a323d42e98e8cbf3e99f51125.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/31fc9977b2ed41f8a59d33c138b729c7.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1334803900141809664",
       "available": false
     },
     {
@@ -264,10 +287,11 @@
       "name": "“My Kat” T-Shirt",
       "piece": "Piece XXIV",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 35,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/e3556f1a64fb4b06be3a2aa31475ce44.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/eef553f1df55422faa47126600150b18.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1334802107047534592",
       "available": false
     },
     {
@@ -275,10 +299,11 @@
       "name": "Aliens Off Earth ✌🏽",
       "piece": "Piece XXV",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/e27411b76b0e45639652f94834febfcb.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/53684cc0441145efa177c11e737535bf.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1334678149308493824",
       "available": false
     },
     {
@@ -286,10 +311,11 @@
       "name": "Fleeced High Neck Hoodie",
       "piece": "Piece XXVI",
       "spec": "Hoodie · Printed on demand",
+      "type": "Hoodie",
       "price": 85,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/36d8ad7fbb5f407eadc2f5ebbf6e77b7.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/acfa03040c1c4d05904276ed718f0548.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1334365421968699392",
       "available": false
     },
     {
@@ -297,10 +323,11 @@
       "name": "Brokenhearted Queen 👸🏽💔",
       "piece": "Piece XXVII",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/a8f9a70df7ea46acbc88a42ede015a1a.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/db3170cc24f64c0388a978c14b2a2529.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1334323461694304256",
       "available": false
     },
     {
@@ -308,10 +335,11 @@
       "name": "Brokenhearted King 💔 Streetwear Unisex Heavy Crew",
       "piece": "Piece XXVIII",
       "spec": "Sweatshirt · Printed on demand",
+      "type": "Sweatshirt",
       "price": 65,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/4dcea658721340699799a36e2b46cb20.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/b915a832fc58455ea118918db278cdc5.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1334225180192550912",
       "available": false
     },
     {
@@ -319,10 +347,11 @@
       "name": "Broken Hearted Unisex Fleece Joggers 💔",
       "piece": "Piece XXIX",
       "spec": "Pants · Printed on demand",
+      "type": "Pants",
       "price": 69,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/cf4c2d1395674baaa101f072d896a8a0.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/6a752165a2e049ed988d988abc595967.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1334161878758338560",
       "available": false
     },
     {
@@ -330,10 +359,11 @@
       "name": "Aliens Valentine’s Day Tee",
       "piece": "Piece XXX",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 35,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/9cf4ea2dd41f4fb8bf0c0900737fe83c.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/c4f035a7af00453f922b73c5e7ddbf81.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1333663245919203328",
       "available": false
     },
     {
@@ -341,10 +371,11 @@
       "name": "2019 420 Tee (Astro Dex)",
       "piece": "Piece XXXI",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 35,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/7794a40b5ed14e49abad667f9b406b30.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/9b920586625b42458251a5878616308e.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1333571534983454720",
       "available": false
     },
     {
@@ -352,10 +383,11 @@
       "name": "Aliens Off Earth 👽",
       "piece": "Piece XXXII",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/b37ef818dca04d2ab8ca1110ea658ada.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/d547b97b4e5943ee84239d349506d46f.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1333262449431949312",
       "available": false
     },
     {
@@ -363,10 +395,11 @@
       "name": "D Stars #1",
       "piece": "Piece XXXIII",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/412640899759414094233974584c09ae.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/f14bab1962894277981a680b9cddb55b.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1332273949316444160",
       "available": false
     },
     {
@@ -374,10 +407,11 @@
       "name": "Houston Snowfall ❄️ #2",
       "piece": "Piece XXXIV",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/e8fc12627cc544829fb6b6f13663e029.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/6aba58367bf24dbe8d7eb415f22d4087.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1332156111352168448",
       "available": false
     },
     {
@@ -385,10 +419,11 @@
       "name": "D Stars #1",
       "piece": "Piece XXXV",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/f96a40a49bdf49398ee55d5605a18a0c.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/d834918317814448a8d59daf9ebc0614.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1332102312616984576",
       "available": false
     },
     {
@@ -396,10 +431,11 @@
       "name": "Golden State Of Mind #2",
       "piece": "Piece XXXVI",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/29be40d2f7934612987d29e5dd3e9ac8.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/60ee2b553d864585a0239ae90db8e3b0.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1331794943802568704",
       "available": false
     },
     {
@@ -407,10 +443,11 @@
       "name": "Golden State Of Mind",
       "piece": "Piece XXXVII",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/14cfa9affd8149c582e472649489b974.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/e4f0807b9a9e4041b7e22b387972c17e.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1331423600066101248",
       "available": false
     },
     {
@@ -418,10 +455,11 @@
       "name": "Houston Snow Edition",
       "piece": "Piece XXXVIII",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/e40ab974919f40569cb11e5cb4207e6d.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/bb40033a03b049d185113381d02a5332.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1331349406334779392",
       "available": false
     },
     {
@@ -429,43 +467,47 @@
       "name": "Oversize Fleeced Hoodie",
       "piece": "Piece XXXIX",
       "spec": "Hoodie · Printed on demand",
+      "type": "Hoodie",
       "price": 79,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/c091836bb671421caa48ad32672819ea.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/6610674d26254dd88a6005a88040a742.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1331339440337125376",
       "available": false
     },
     {
       "id": "egyptian-head",
       "name": "Egyptian Head",
-      "piece": "Piece XXXX",
+      "piece": "Piece XL",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 39,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/805b91c48e3947739f4c772b15a2af8b.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/56412953c4844fa896ec0ba9a425c379.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1330858994750943232",
       "available": false
     },
     {
       "id": "vintage-wash-frayed-fleece-hoodie-360-gs",
       "name": "Vintage Wash Frayed Fleece Hoodie - 360 GSM",
-      "piece": "Piece XXXXI",
+      "piece": "Piece XLI",
       "spec": "Hoodie · Printed on demand",
+      "type": "Hoodie",
       "price": 89,
       "image": "https://files.tapstitch.com/material/style/item_image/R00285/image-R00285-D%20(3)-v1726717023.jpg",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/e953229681ed428a90fdbb819a1f8570.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1330856091055255552",
       "available": false
     },
     {
       "id": "oversize-snow-washed-t-shirt-5536",
       "name": "Oversize Snow Washed T-Shirt",
-      "piece": "Piece XXXXII",
+      "piece": "Piece XLII",
       "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
       "price": 35,
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/03c22e84fb3d45dab6ab359c3af69b33.png",
+      "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/07cc401c957649b28a2b4a282ef372b7.png",
       "vendor": "tapstitch",
-      "tapstitchId": "1330625351575105536",
       "available": false
     }
   ]

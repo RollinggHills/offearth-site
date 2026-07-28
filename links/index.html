@@ -29,13 +29,14 @@
 
 <style>
 :root{
-  --haze:#DDE4EC;
+  --haze:#080C14;
   --paper:#F3F7FB;
-  --ink:#0B1220;
-  --slate:#5A6B80;
-  --marine:#1F3BE0;
-  --signal:#FF4D14;
-  --rule:rgba(11,18,32,.14);
+  --ink:#EDF2F9;
+  --slate:#8DA0B8;
+  --marine:#5877FF;
+  --marine-deep:#2440DC;
+  --signal:#FF5A24;
+  --rule:rgba(237,242,249,.16);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -80,19 +81,39 @@ body{
 
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
 
-/* ---------- wordmark ---------- */
+/* ---------- wordmark (official emblem) ----------
+   logo-emblem.png is a 760px square; the mark itself occupies
+   x 36-726, y 5-700. The negative margins below cancel that
+   transparent padding so the mark sits flush with the text
+   column and spaces evenly against the tagline. */
 
-.mark{padding:44px 0 0}
-
-.mark-line{
-  font-family:'Archivo Black',sans-serif;
-  font-size:clamp(58px,17vw,104px);
-  line-height:.84;
-  letter-spacing:-.045em;
-  display:block;
+.mark{
+  --ew:clamp(208px,60vw,278px);
+  padding:40px 0 0;
 }
 
-.mark-line--out{color:var(--marine)}
+.emblem-wrap{
+  position:relative;
+  display:block;
+  width:var(--ew);
+  margin-left:calc(var(--ew) * -.047);
+  margin-bottom:calc(var(--ew) * -.078);
+}
+
+.emblem{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.reg{
+  position:absolute;
+  left:calc(var(--ew) * .995);
+  top:calc(var(--ew) * .34);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  color:var(--slate);
+}
 
 .tag{
   margin-top:22px;
@@ -123,7 +144,7 @@ body{
 }
 
 .row:hover,.row:focus-visible{
-  background:var(--marine);
+  background:var(--marine-deep);
   color:var(--paper);
   padding-left:12px;
   padding-right:12px;
@@ -187,7 +208,7 @@ body{
   text-transform:uppercase;
   text-decoration:none;
   color:var(--ink);
-  background:var(--paper);
+  background:transparent;
   border:1px solid var(--rule);
   padding:10px 14px;
   transition:background .16s ease,color .16s ease,border-color .16s ease;
@@ -195,7 +216,7 @@ body{
 
 .chip:hover,.chip:focus-visible{
   background:var(--ink);
-  color:var(--paper);
+  color:var(--haze);
   border-color:var(--ink);
   outline:none;
 }
@@ -248,8 +269,10 @@ body{
   </div>
 
   <header class="mark">
-    <span class="mark-line mark-line--out settle" style="animation-delay:.12s">OFF</span>
-    <span class="mark-line settle" style="animation-delay:.20s">EARTH</span>
+    <div class="emblem-wrap settle" style="animation-delay:.12s">
+      <img class="emblem" src="/assets/logo-emblem.png" width="760" height="760" alt="OFF EARTH LLC">
+      <span class="reg" aria-hidden="true">&copy;</span>
+    </div>
     <p class="tag settle" style="animation-delay:.30s">
       Three ways in. <b>One company</b> behind all of them.
     </p>

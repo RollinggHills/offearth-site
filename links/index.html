@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OFF EARTH LLC</title>
+<meta name="description" content="OFF EARTH LLC — GRAMTV, apparel, ADA Sensei, ForgeEdge, 21AndDone.">
+
+<!-- ============================================================
+     EDIT HERE: replace every href="#" below with your real URL.
+     Also swap the meta og:url / og:image once you have a domain.
+     ============================================================ -->
+<meta property="og:title" content="OFF EARTH LLC">
+<meta property="og:description" content="GRAMTV, OFF EARTH, and Lord Hill Consulting.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://offearthllc.com/links">
+
+<!-- ANALYTICS: paste your Cloudflare Web Analytics token below, then
+     uncomment the script tag. Get it at dash.cloudflare.com >
+     Analytics & Logs > Web Analytics > Add a site. -->
+<!--
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "PASTE_YOUR_TOKEN_HERE"}'></script>
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --haze:#DDE4EC;
+  --paper:#F3F7FB;
+  --ink:#0B1220;
+  --slate:#5A6B80;
+  --marine:#1F3BE0;
+  --signal:#FF4D14;
+  --rule:rgba(11,18,32,.14);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  background:var(--haze);
+  color:var(--ink);
+  font-family:'Archivo',system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.45;
+  padding:28px 20px 56px;
+  display:flex;
+  justify-content:center;
+}
+
+.shell{width:100%;max-width:560px}
+
+/* ---------- status strip ---------- */
+
+.strip{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--slate);
+  padding-bottom:14px;
+  border-bottom:1px solid var(--rule);
+}
+
+.strip-live{display:flex;align-items:center;gap:8px}
+
+.dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--signal);
+  animation:pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ---------- wordmark ---------- */
+
+.mark{padding:44px 0 0}
+
+.mark-line{
+  font-family:'Archivo Black',sans-serif;
+  font-size:clamp(58px,17vw,104px);
+  line-height:.84;
+  letter-spacing:-.045em;
+  display:block;
+}
+
+.mark-line--out{color:var(--marine)}
+
+.tag{
+  margin-top:22px;
+  font-size:16px;
+  color:var(--slate);
+  max-width:34ch;
+}
+
+.tag b{color:var(--ink);font-weight:600}
+
+/* ---------- board ---------- */
+
+.board{
+  margin-top:40px;
+  border-top:1px solid var(--rule);
+}
+
+.row{
+  display:grid;
+  grid-template-columns:60px 1fr 20px;
+  gap:16px;
+  align-items:center;
+  padding:18px 12px 18px 0;
+  border-bottom:1px solid var(--rule);
+  text-decoration:none;
+  color:inherit;
+  transition:background .16s ease,padding .16s ease,color .16s ease;
+}
+
+.row:hover,.row:focus-visible{
+  background:var(--marine);
+  color:var(--paper);
+  padding-left:12px;
+  padding-right:12px;
+  outline:none;
+}
+
+.row:focus-visible{box-shadow:inset 0 0 0 2px var(--signal)}
+
+.call{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.08em;
+  color:var(--marine);
+  transition:color .16s ease;
+}
+
+.row:hover .call,.row:focus-visible .call{color:var(--signal)}
+
+.name{
+  display:block;
+  font-family:'Archivo Black',sans-serif;
+  font-size:20px;
+  letter-spacing:-.02em;
+  line-height:1.1;
+}
+
+.desc{
+  display:block;
+  font-size:14px;
+  color:var(--slate);
+  margin-top:3px;
+  transition:color .16s ease;
+}
+
+.row:hover .desc,.row:focus-visible .desc{color:rgba(243,247,251,.75)}
+
+.arrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:15px;
+  color:var(--slate);
+  justify-self:end;
+  transition:transform .16s ease,color .16s ease;
+}
+
+.row:hover .arrow,.row:focus-visible .arrow{color:var(--paper);transform:translateX(3px)}
+
+/* ---------- social ---------- */
+
+.social{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:32px;
+}
+
+.chip{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--ink);
+  background:var(--paper);
+  border:1px solid var(--rule);
+  padding:10px 14px;
+  transition:background .16s ease,color .16s ease,border-color .16s ease;
+}
+
+.chip:hover,.chip:focus-visible{
+  background:var(--ink);
+  color:var(--paper);
+  border-color:var(--ink);
+  outline:none;
+}
+
+.chip:focus-visible{box-shadow:0 0 0 2px var(--signal)}
+
+/* ---------- footer ---------- */
+
+.foot{
+  margin-top:44px;
+  padding-top:16px;
+  border-top:1px solid var(--rule);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--slate);
+  line-height:2;
+}
+
+/* ---------- load sequence ---------- */
+
+.settle{
+  opacity:0;
+  transform:translateY(10px);
+  animation:settle .5s cubic-bezier(.2,.7,.3,1) forwards;
+}
+
+@keyframes settle{to{opacity:1;transform:translateY(0)}}
+
+@media (prefers-reduced-motion:reduce){
+  .settle{animation:none;opacity:1;transform:none}
+  .dot{animation:none}
+  *{transition-duration:.01ms !important}
+}
+
+@media (max-width:400px){
+  .row{grid-template-columns:48px 1fr 16px;gap:12px}
+  .name{font-size:18px}
+}
+</style>
+</head>
+
+<body>
+<main class="shell">
+
+  <div class="strip settle" style="animation-delay:.05s">
+    <span class="strip-live"><span class="dot"></span>Open for work</span>
+    <span>Los Angeles, CA</span>
+  </div>
+
+  <header class="mark">
+    <span class="mark-line mark-line--out settle" style="animation-delay:.12s">OFF</span>
+    <span class="mark-line settle" style="animation-delay:.20s">EARTH</span>
+    <p class="tag settle" style="animation-delay:.30s">
+      Three ways in. <b>One company</b> behind all of them.
+    </p>
+  </header>
+
+  <nav class="board" aria-label="Ventures">
+
+    <a class="row settle" style="animation-delay:.38s" data-v="gramtv" href="https://www.youtube.com/@gramtv770">
+      <span class="call">GTV</span>
+      <span>
+        <span class="name">GRAMTV</span>
+        <span class="desc">Affirmation tracks for daily reprogramming.</span>
+      </span>
+      <span class="arrow" aria-hidden="true">&rarr;</span>
+    </a>
+
+    <a class="row settle" style="animation-delay:.44s" data-v="website" href="https://offearthllc.com">
+      <span class="call">OEA</span>
+      <span>
+        <span class="name">OFF EARTH LLC</span>
+        <span class="desc">The parent company. Apparel and everything else.</span>
+      </span>
+      <span class="arrow" aria-hidden="true">&rarr;</span>
+    </a>
+
+    <a class="row settle" style="animation-delay:.50s" data-v="consulting" href="https://lordhillconsulting.com">
+      <span class="call">LHC</span>
+      <span>
+        <span class="name">Lord Hill Consulting</span>
+        <span class="desc">Consulting, audits, and direct hire.</span>
+      </span>
+      <span class="arrow" aria-hidden="true">&rarr;</span>
+    </a>
+
+  </nav>
+
+  <div class="social settle" style="animation-delay:.60s">
+    <a class="chip" href="mailto:info@offearthllc.com">Email</a>
+  </div>
+
+  <footer class="foot settle" style="animation-delay:.78s">
+    OFF EARTH LLC &middot; California<br>
+    &copy; <span id="yr">2026</span> All rights reserved
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* Tags every outbound venture link with UTM parameters so YouTube,
+     Shopify, and your site analytics each show how much traffic the
+     hub sent them. Runs on click, so you can paste plain URLs above
+     and never think about it again. */
+  document.querySelectorAll('.row[data-v]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var href = link.getAttribute('href');
+      if (!href || href === '#' || href.indexOf('utm_source') > -1) return;
+      try {
+        var url = new URL(href, location.href);
+        if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
+        url.searchParams.set('utm_source', 'offearth-hub');
+        url.searchParams.set('utm_medium', 'bio');
+        url.searchParams.set('utm_campaign', link.dataset.v);
+        link.setAttribute('href', url.toString());
+      } catch (e) { /* leave the link untouched */ }
+    });
+  });
+</script>
+</body>
+</html>

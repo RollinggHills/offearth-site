@@ -495,45 +495,206 @@ setInterval(draw, 55);
     document.body.classList.toggle('oe-hot', !!(e.target.closest && e.target.closest(HOT)));
   }, { passive: true });
 
-  /* ── Magnetic buttons + card tilt, driven from the same loop ── */
-  const magnets = () => [...document.querySelectorAll('.btn')];
-  const cards = () => [...document.querySelectorAll('.piece')];
+  /* ── Magnetic buttons + card tilt ──
+     Only the card actually under the pointer is measured, and button
+     rects are cached until layout changes. The loop parks itself when
+     the pointer has been still and nothing is left to settle, so an
+     idle page does no per-frame layout work at all. */
+  let hovCard = null, hovFrame = null;
+  let btnRects = null;
+  const invalidate = () => { btnRects = null; };
+  addEventListener('scroll', invalidate, { passive: true });
+  addEventListener('resize', invalidate, { passive: true });
+
+  function buttons() {
+    if (!btnRects) {
+      btnRects = [...document.querySelectorAll('.btn')].map(el => ({ el, r: el.getBoundingClientRect() }));
+    }
+    return btnRects;
+  }
+
+  let lastMove = performance.now();
+  let running = false;
+
+  function wake() {
+    lastMove = performance.now();
+    if (!running) { running = true; requestAnimationFrame(frame); }
+  }
+
+  addEventListener('mousemove', (e) => {
+    const card = e.target.closest ? e.target.closest('.piece') : null;
+    if (card !== hovCard) {
+      if (hovFrame) hovFrame.style.transform = '';
+      hovCard = card;
+      hovFrame = card ? card.querySelector('.frame') : null;
+    }
+    wake();
+  }, { passive: true });
+  addEventListener('scroll', wake, { passive: true });
 
   function frame() {
     gx += (mx - gx) * 0.16;
     gy += (my - gy) * 0.16;
-    glow.style.transform = `translate(${gx}px, ${gy}px)` + (document.body.classList.contains('oe-hot') ? ' scale(1.45)' : '');
+    const hot = document.body.classList.contains('oe-hot');
+    glow.style.transform = `translate(${gx}px, ${gy}px)` + (hot ? ' scale(1.45)' : '');
 
-    for (const b of magnets()) {
-      const r = b.getBoundingClientRect();
-      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-      const dx = mx - cx, dy = my - cy;
+    let moving = false;
+
+    for (const { el, r } of buttons()) {
+      const dx = mx - (r.left + r.width / 2), dy = my - (r.top + r.height / 2);
       const dist = Math.hypot(dx, dy);
       const range = Math.max(r.width, r.height) * 0.9 + 40;
       if (dist < range) {
         const pull = (1 - dist / range) * 9;
-        b.style.transform = `translate(${(dx / dist || 0) * pull}px, ${(dy / dist || 0) * pull - 2}px)`;
-      } else if (b.style.transform) {
-        b.style.transform = '';
+        el.style.transform = `translate(${(dx / dist || 0) * pull}px, ${(dy / dist || 0) * pull - 2}px)`;
+        moving = true;
+      } else if (el.style.transform) {
+        el.style.transform = '';
       }
     }
 
-    for (const c of cards()) {
-      const f = c.querySelector('.frame');
-      if (!f) continue;
-      const r = c.getBoundingClientRect();
-      if (mx < r.left || mx > r.right || my < r.top || my > r.bottom) {
-        if (f.style.transform) f.style.transform = '';
-        continue;
-      }
+    if (hovFrame && hovCard) {
+      const r = hovCard.getBoundingClientRect();
       const px = (mx - r.left) / r.width - 0.5;
       const py = (my - r.top) / r.height - 0.5;
-      f.style.transform = `perspective(900px) rotateY(${px * 7}deg) rotateX(${-py * 7}deg) translateZ(6px)`;
+      hovFrame.style.transform = `perspective(900px) rotateY(${px * 7}deg) rotateX(${-py * 7}deg) translateZ(6px)`;
+      moving = true;
     }
 
+    const settled = Math.abs(mx - gx) < 0.4 && Math.abs(my - gy) < 0.4;
+    if (performance.now() - lastMove > 500 && settled && !moving) {
+      running = false;   // park until the pointer moves again
+      return;
+    }
     requestAnimationFrame(frame);
   }
-  requestAnimationFrame(frame);
+  wake();
+})();
+</script>
+
+<script>
+/* ── Click strike: beam from above, shockwave, sparks ──
+   One pooled canvas, and the rAF loop only runs while something is
+   alive, so an idle page costs nothing. */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const cv = document.createElement('canvas');
+  cv.id = 'oe-strike';
+  Object.assign(cv.style, {
+    position: 'fixed', inset: '0', width: '100%', height: '100%',
+    pointerEvents: 'none', zIndex: '9998',
+  });
+  document.body.appendChild(cv);
+  const ctx = cv.getContext('2d');
+
+  let dpr = 1;
+  function size() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    cv.width = Math.floor(innerWidth * dpr);
+    cv.height = Math.floor(innerHeight * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  size();
+  addEventListener('resize', size);
+
+  const PALETTE = ['#ff6b9d', '#ff8e53', '#b266ff', '#ffd9c4', '#ff9dbb'];
+  const sparks = [];
+  const shocks = [];
+  const beams = [];
+  let running = false;
+
+  function strike(x, y) {
+    beams.push({ x, y, life: 1 });
+    shocks.push({ x, y, life: 1 });
+    const n = 20 + ((Math.random() * 8) | 0);
+    for (let i = 0; i < n; i++) {
+      const a = (Math.PI * 2 * i) / n + Math.random() * 0.5;
+      const sp = 2.2 + Math.random() * 5.2;
+      sparks.push({
+        x, y,
+        vx: Math.cos(a) * sp,
+        vy: Math.sin(a) * sp - 1.1,
+        life: 1,
+        decay: 0.016 + Math.random() * 0.022,
+        size: 1.4 + Math.random() * 2.4,
+        color: PALETTE[(Math.random() * PALETTE.length) | 0],
+      });
+    }
+    if (!running) { running = true; requestAnimationFrame(tick); }
+  }
+
+  function tick() {
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+    for (let i = beams.length - 1; i >= 0; i--) {
+      const b = beams[i];
+      b.life -= 0.075;
+      if (b.life <= 0) { beams.splice(i, 1); continue; }
+      const halfTop = 9 + (1 - b.life) * 16;
+      const halfHit = 2 + (1 - b.life) * 5;
+      const g = ctx.createLinearGradient(0, 0, 0, b.y);
+      g.addColorStop(0, `rgba(178,102,255,${0.02 * b.life})`);
+      g.addColorStop(0.65, `rgba(255,107,157,${0.20 * b.life})`);
+      g.addColorStop(1, `rgba(255,217,196,${0.5 * b.life})`);
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.moveTo(b.x - halfTop, 0);
+      ctx.lineTo(b.x + halfTop, 0);
+      ctx.lineTo(b.x + halfHit, b.y);
+      ctx.lineTo(b.x - halfHit, b.y);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    for (let i = shocks.length - 1; i >= 0; i--) {
+      const s = shocks[i];
+      s.life -= 0.045;
+      if (s.life <= 0) { shocks.splice(i, 1); continue; }
+      const r = (1 - s.life) * 78;
+      ctx.strokeStyle = `rgba(255,142,83,${s.life * 0.85})`;
+      ctx.lineWidth = 2.4 * s.life + 0.4;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, r, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.strokeStyle = `rgba(255,255,255,${s.life * 0.35})`;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, r * 0.6, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    for (let i = sparks.length - 1; i >= 0; i--) {
+      const p = sparks[i];
+      p.life -= p.decay;
+      if (p.life <= 0) { sparks.splice(i, 1); continue; }
+      p.vy += 0.16;
+      p.vx *= 0.985;
+      p.vy *= 0.985;
+      p.x += p.vx;
+      p.y += p.vy;
+      ctx.globalAlpha = Math.max(p.life, 0);
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    if (sparks.length || shocks.length || beams.length) {
+      requestAnimationFrame(tick);
+    } else {
+      running = false;
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+    }
+  }
+
+  addEventListener('pointerdown', (e) => {
+    if (e.button !== undefined && e.button !== 0) return;
+    strike(e.clientX, e.clientY);
+  }, { passive: true });
+
+  window.__oeStrike = strike;
 })();
 </script>
 </body>

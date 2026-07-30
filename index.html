@@ -259,7 +259,7 @@
 let PRODUCTS = [];
 const FILTER_GROUPS = {
   'ALL': () => true,
-  'TEES': p => /t-shirt|sweatshirt/i.test(p.type || ''),
+  'TEES': p => /t-shirt|sweatshirt|tank/i.test(p.type || ''),
   'HOODIES': p => /hoodie/i.test(p.type || ''),
   'BOTTOMS': p => /pants|shorts/i.test(p.type || ''),
   'MORE': p => /accessory|women/i.test(p.type || ''),
@@ -294,7 +294,9 @@ function renderGrid(filterName) {
   });
 }
 
-fetch('products.json')
+// Cache-bust per minute: GitHub Pages caches assets, so without this a
+// returning visitor keeps seeing the old catalog after a product is added.
+fetch('products.json?v=' + Math.floor(Date.now() / 60000))
   .then(r => r.json())
   .then(cat => {
     document.getElementById('drop-title').textContent = 'DROP ' + cat.drop.number + ' — ' + cat.drop.name;

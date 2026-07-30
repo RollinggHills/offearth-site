@@ -425,6 +425,18 @@
       "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/07cc401c957649b28a2b4a282ef372b7.png",
       "vendor": "tapstitch",
       "available": false
+    },
+    {
+      "id": "dead-sun-boxy-tank",
+      "name": "'DEAD SUN' Boxy Tank",
+      "piece": "Piece XXXVI",
+      "spec": "Tank · Printed on demand",
+      "type": "Tank",
+      "price": 55,
+      "image": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785386215/offearth_products/dead-sun-boxy-tank-front.jpg",
+      "image2": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785386216/offearth_products/dead-sun-boxy-tank-back.jpg",
+      "vendor": "tapstitch",
+      "available": false
     }
   ]
 }

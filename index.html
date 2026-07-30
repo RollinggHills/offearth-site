@@ -412,5 +412,129 @@ function draw() {
 }
 setInterval(draw, 55);
 </script>
+
+<style>
+/* ── Alien cursor + micro-interactions ──
+   Everything here is opt-in: fine-pointer devices only, and fully
+   disabled for anyone who asked for reduced motion. Touch users and
+   keyboard users lose nothing. */
+@media (hover:hover) and (pointer:fine) {
+  body.oe-fx, body.oe-fx * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 2C9 2 5 7.5 5 13.5c0 6.5 5.5 12 11 16.5 5.5-4.5 11-10 11-16.5C27 7.5 23 2 16 2z' fill='%230d0018' stroke='%23ff6b9d' stroke-width='1.6'/%3E%3Cellipse cx='11.5' cy='14' rx='3.2' ry='4.6' fill='%23ff6b9d' transform='rotate(-20 11.5 14)'/%3E%3Cellipse cx='20.5' cy='14' rx='3.2' ry='4.6' fill='%23ff6b9d' transform='rotate(20 20.5 14)'/%3E%3C/svg%3E") 16 3, auto;
+  }
+  body.oe-fx a, body.oe-fx button, body.oe-fx .btn, body.oe-fx .piece,
+  body.oe-fx .chip, body.oe-fx input, body.oe-fx [role="button"] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' viewBox='0 0 32 32'%3E%3Cpath d='M16 2C9 2 5 7.5 5 13.5c0 6.5 5.5 12 11 16.5 5.5-4.5 11-10 11-16.5C27 7.5 23 2 16 2z' fill='%231a0033' stroke='%23ff8e53' stroke-width='2'/%3E%3Cellipse cx='11.5' cy='14' rx='3.4' ry='4.8' fill='%23ffd9c4' transform='rotate(-20 11.5 14)'/%3E%3Cellipse cx='20.5' cy='14' rx='3.4' ry='4.8' fill='%23ffd9c4' transform='rotate(20 20.5 14)'/%3E%3C/svg%3E") 19 3, pointer;
+  }
+  #oe-glow {
+    position: fixed; top: 0; left: 0; width: 260px; height: 260px;
+    margin: -130px 0 0 -130px; border-radius: 50%; pointer-events: none;
+    z-index: 3; opacity: 0; mix-blend-mode: screen;
+    background: radial-gradient(circle, rgba(255,107,157,.20) 0%, rgba(178,102,255,.10) 40%, transparent 70%);
+    transition: opacity .4s ease, transform .18s ease-out;
+    will-change: transform;
+  }
+  body.oe-fx #oe-glow { opacity: 1; }
+  body.oe-fx.oe-hot #oe-glow { transform: scale(1.45); }
+}
+
+.oe-reveal { opacity: 0; transform: translateY(26px); }
+.oe-reveal.oe-in { opacity: 1; transform: none; transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
+
+.piece .frame { will-change: transform; transition: border-color .3s, box-shadow .3s, transform .25s ease-out; transform-style: preserve-3d; }
+.btn { will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  .oe-reveal, .oe-reveal.oe-in { opacity: 1 !important; transform: none !important; transition: none !important; }
+  #oe-glow { display: none !important; }
+}
+</style>
+
+<script>
+(function () {
+  const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Scroll reveal (runs for everyone; CSS neutralises it when calm) ── */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('oe-in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+  const watch = (el, delay) => {
+    if (!el || el.classList.contains('oe-reveal')) return;
+    el.classList.add('oe-reveal');
+    if (delay) el.style.transitionDelay = delay + 'ms';
+    io.observe(el);
+  };
+
+  document.querySelectorAll('section > .wrap, .statement p, .app-band').forEach(el => watch(el));
+
+  // Product cards are re-rendered on every filter change, so catch new ones.
+  const grid = document.getElementById('pieces');
+  if (grid) {
+    const stagger = () => [...grid.querySelectorAll('.piece')].forEach((el, i) => watch(el, Math.min(i * 55, 400)));
+    stagger();
+    new MutationObserver(stagger).observe(grid, { childList: true });
+  }
+
+  if (!fine || calm) return;
+
+  document.body.classList.add('oe-fx');
+  const glow = document.createElement('div');
+  glow.id = 'oe-glow';
+  document.body.appendChild(glow);
+
+  /* ── Cursor glow: lerped follow, one rAF loop for the whole page ── */
+  let mx = innerWidth / 2, my = innerHeight / 2, gx = mx, gy = my;
+  const HOT = 'a, button, .btn, .piece, .chip, input, [role="button"]';
+
+  addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    document.body.classList.toggle('oe-hot', !!(e.target.closest && e.target.closest(HOT)));
+  }, { passive: true });
+
+  /* ── Magnetic buttons + card tilt, driven from the same loop ── */
+  const magnets = () => [...document.querySelectorAll('.btn')];
+  const cards = () => [...document.querySelectorAll('.piece')];
+
+  function frame() {
+    gx += (mx - gx) * 0.16;
+    gy += (my - gy) * 0.16;
+    glow.style.transform = `translate(${gx}px, ${gy}px)` + (document.body.classList.contains('oe-hot') ? ' scale(1.45)' : '');
+
+    for (const b of magnets()) {
+      const r = b.getBoundingClientRect();
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      const dx = mx - cx, dy = my - cy;
+      const dist = Math.hypot(dx, dy);
+      const range = Math.max(r.width, r.height) * 0.9 + 40;
+      if (dist < range) {
+        const pull = (1 - dist / range) * 9;
+        b.style.transform = `translate(${(dx / dist || 0) * pull}px, ${(dy / dist || 0) * pull - 2}px)`;
+      } else if (b.style.transform) {
+        b.style.transform = '';
+      }
+    }
+
+    for (const c of cards()) {
+      const f = c.querySelector('.frame');
+      if (!f) continue;
+      const r = c.getBoundingClientRect();
+      if (mx < r.left || mx > r.right || my < r.top || my > r.bottom) {
+        if (f.style.transform) f.style.transform = '';
+        continue;
+      }
+      const px = (mx - r.left) / r.width - 0.5;
+      const py = (my - r.top) / r.height - 0.5;
+      f.style.transform = `perspective(900px) rotateY(${px * 7}deg) rotateX(${-py * 7}deg) translateZ(6px)`;
+    }
+
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
 </body>
 </html>

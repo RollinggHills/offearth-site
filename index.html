@@ -150,6 +150,16 @@
   .modal .m-spec { font-size:11px; letter-spacing:2px; color:#8f80ab; text-transform:uppercase; }
   .modal .m-price { font-family:'Archivo Black'; font-size:26px; color:#ff6b9d; margin:14px 0 4px; }
   .modal .m-status { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:3px; color:#ffd166; margin-bottom:16px; }
+  .modal .m-opt { margin:16px 0 4px; text-align:left; }
+  .modal .m-opt-label { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:3px; color:#a98cd6; text-transform:uppercase; margin-bottom:9px; }
+  .modal .m-opt-pick { color:#ff9dbb; letter-spacing:2px; }
+  .modal .m-swatches, .modal .m-sizes { display:flex; gap:9px; flex-wrap:wrap; }
+  .modal .sw { width:30px; height:30px; border-radius:999px; border:2px solid rgba(255,255,255,.35); padding:0; cursor:pointer; transition:transform .15s, border-color .15s, box-shadow .15s; }
+  .modal .sw:hover { transform:scale(1.09); }
+  .modal .sw.on { border-color:#ff8e53; box-shadow:0 0 0 3px rgba(255,142,83,.28); }
+  .modal .sz { min-width:46px; padding:9px 12px; border-radius:6px; background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.28); color:#e9d8ff; font-family:'Space Mono',monospace; font-size:12px; letter-spacing:1.5px; cursor:pointer; transition:background .15s, border-color .15s, color .15s, transform .15s; }
+  .modal .sz:hover { transform:translateY(-2px); border-color:#ff8e53; }
+  .modal .sz.on { background:#ff8e53; border-color:#ff8e53; color:#1a0033; font-weight:700; }
   .modal .m-cta { display:inline-block; }
 </style>
 </head>
@@ -248,6 +258,14 @@
       <div class="m-name" id="m-name"></div>
       <div class="m-spec" id="m-spec"></div>
       <div class="m-price" id="m-price"></div>
+      <div class="m-opt" id="m-colors-wrap" hidden>
+        <div class="m-opt-label">COLOR <span class="m-opt-pick" id="m-color-pick"></span></div>
+        <div class="m-swatches" id="m-colors" role="radiogroup" aria-label="Colour"></div>
+      </div>
+      <div class="m-opt" id="m-sizes-wrap" hidden>
+        <div class="m-opt-label">SIZE</div>
+        <div class="m-sizes" id="m-sizes" role="radiogroup" aria-label="Size"></div>
+      </div>
       <div class="m-status" id="m-status">DROP 001 LOADING — WAITLIST GETS FIRST ACCESS</div>
       <a class="btn btn-primary m-cta" href="#join" id="m-cta">JOIN THE WAITLIST</a>
     </div>
@@ -321,12 +339,60 @@ function setFlipped(flipped) {
   flipcard.classList.toggle('flipped', flipped);
   document.getElementById('m-flip').textContent = flipped ? '🔄 SEE FRONT' : '🔄 SEE BACK';
 }
+// ── Size / colour selectors ──
+// Products predate these fields, so each row hides unless the product
+// actually carries the data. Selection is remembered per product.
+const mChoice = {};
+
+function renderOptions(p) {
+  const colWrap = document.getElementById('m-colors-wrap');
+  const sizeWrap = document.getElementById('m-sizes-wrap');
+  const colBox = document.getElementById('m-colors');
+  const sizeBox = document.getElementById('m-sizes');
+  const pick = document.getElementById('m-color-pick');
+  mChoice[p.id] = mChoice[p.id] || {};
+
+  const colors = Array.isArray(p.colors) ? p.colors : [];
+  colWrap.hidden = colors.length === 0;
+  colBox.innerHTML = '';
+  if (colors.length) {
+    if (!mChoice[p.id].color) mChoice[p.id].color = colors[0].name;
+    pick.textContent = '— ' + mChoice[p.id].color;
+    colors.forEach(c => {
+      const b = document.createElement('button');
+      b.className = 'sw' + (c.name === mChoice[p.id].color ? ' on' : '');
+      b.style.background = c.hex || '#333';
+      b.type = 'button';
+      b.setAttribute('role', 'radio');
+      b.setAttribute('aria-label', c.name);
+      b.setAttribute('aria-checked', String(c.name === mChoice[p.id].color));
+      b.addEventListener('click', () => { mChoice[p.id].color = c.name; renderOptions(p); });
+      colBox.appendChild(b);
+    });
+  }
+
+  const sizes = Array.isArray(p.sizes) ? p.sizes : [];
+  sizeWrap.hidden = sizes.length === 0;
+  sizeBox.innerHTML = '';
+  sizes.forEach(s => {
+    const b = document.createElement('button');
+    b.className = 'sz' + (s === mChoice[p.id].size ? ' on' : '');
+    b.type = 'button';
+    b.textContent = s;
+    b.setAttribute('role', 'radio');
+    b.setAttribute('aria-checked', String(s === mChoice[p.id].size));
+    b.addEventListener('click', () => { mChoice[p.id].size = s; renderOptions(p); });
+    sizeBox.appendChild(b);
+  });
+}
+
 function openModal(p) {
   mProduct = p;
   document.getElementById('m-piece').textContent = p.piece + ' · ' + (p.vendor === 'tapstitch' ? 'printed on demand' : p.vendor);
   document.getElementById('m-name').textContent = p.name;
   document.getElementById('m-spec').textContent = p.spec;
   document.getElementById('m-price').textContent = '$' + p.price;
+  renderOptions(p);
   document.getElementById('m-flip').style.display = p.image2 ? 'block' : 'none';
   document.getElementById('m-face-front').style.backgroundImage = `url('${p.image}')`;
   document.getElementById('m-face-back').style.backgroundImage = p.image2 ? `url('${p.image2}')` : 'none';

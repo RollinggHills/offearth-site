@@ -144,6 +144,47 @@
   .m-face.back { transform: rotateY(180deg); }
   @media (prefers-reduced-motion: reduce) { .m-flipcard { transition:none; } }
   .modal .m-flip { display:block; margin:14px auto 0; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:2px; padding:9px 20px; border-radius:999px; border:1.5px solid #ff6b9d; background:none; color:#ff6b9d; cursor:pointer; }
+
+  /* ── Carousel (shared: product modal, lookbook, hero strip) ── */
+  .car { position:relative; }
+  .car-stage { position:relative; perspective:1400px; }
+  .car-card { position:relative; width:100%; transform-style:preserve-3d; transition:transform .6s cubic-bezier(.3,1.2,.35,1); }
+  .car-card.flipped { transform:rotateY(180deg); }
+  .car-face { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; background:#f4f2f7 center/cover no-repeat; }
+  .car-face.b { transform:rotateY(180deg); }
+  .car-nav { position:absolute; top:50%; transform:translateY(-50%); z-index:4; width:40px; height:40px; border-radius:999px; border:1.5px solid rgba(255,255,255,.5); background:rgba(13,0,24,.62); color:#fff; font-size:19px; line-height:1; cursor:pointer; backdrop-filter:blur(4px); transition:background .2s, border-color .2s, transform .2s; display:flex; align-items:center; justify-content:center; }
+  .car-nav:hover { background:#ff6b9d; border-color:#ff6b9d; transform:translateY(-50%) scale(1.08); }
+  .car-nav.prev { left:10px; } .car-nav.next { right:10px; }
+  .car-nav[disabled] { opacity:.28; cursor:default; }
+  .car-count { position:absolute; bottom:10px; right:12px; z-index:4; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:2px; color:#fff; background:rgba(13,0,24,.68); padding:4px 9px; border-radius:999px; }
+  .car-dots { display:flex; gap:7px; justify-content:center; padding:12px 0 0; }
+  .car-dot { width:7px; height:7px; border-radius:999px; border:none; padding:0; background:rgba(255,255,255,.3); cursor:pointer; transition:background .2s, transform .2s; }
+  .car-dot.on { background:#ff8e53; transform:scale(1.5); }
+  .car-thumbs { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:12px 0 0; }
+  .car-thumb { width:46px; height:46px; border-radius:6px; border:1.5px solid rgba(255,255,255,.22); background:#f4f2f7 center/cover no-repeat; cursor:pointer; padding:0; transition:border-color .2s, transform .2s; }
+  .car-thumb:hover { transform:translateY(-2px); }
+  .car-thumb.on { border-color:#ff8e53; box-shadow:0 0 0 2px rgba(255,142,83,.3); }
+  @media (prefers-reduced-motion: reduce) { .car-card { transition:none; } }
+
+  /* Hero "now showing" strip */
+  .now { display:inline-flex; align-items:center; gap:14px; margin-top:38px; padding:9px 20px 9px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.2); background:rgba(26,0,51,.55); backdrop-filter:blur(5px); cursor:pointer; font-family:inherit; color:#fff; transition:border-color .25s, transform .25s, background .25s; }
+  .now:hover { border-color:#ff8e53; transform:translateY(-2px); background:rgba(26,0,51,.8); }
+  .now-kicker { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:2.5px; color:#a98cd6; }
+  .now-thumb { width:38px; height:38px; border-radius:999px; background:#f4f2f7 center/cover no-repeat; flex:none; transition:opacity .35s; }
+  .now-text { display:flex; align-items:baseline; gap:10px; transition:opacity .35s; }
+  .now-name { font-size:12px; letter-spacing:1.5px; }
+  .now-price { font-family:'Archivo Black'; font-size:13px; color:#ff6b9d; }
+  .now.fading .now-thumb, .now.fading .now-text { opacity:0; }
+  @media (max-width:520px) { .now-kicker { display:none; } }
+
+  /* Lookbook */
+  .lookbook { border-top:1px solid rgba(255,255,255,.12); }
+  .lb-stage { border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.16); }
+  .lb-card { aspect-ratio:1/1; }
+  .lb-meta { display:flex; justify-content:space-between; align-items:baseline; gap:16px; margin-top:16px; flex-wrap:wrap; }
+  .lb-meta .n { font-family:'Archivo Black'; font-size:19px; letter-spacing:1px; }
+  .lb-meta .n small { display:block; font-family:'Space Mono',monospace; font-weight:400; font-size:10px; letter-spacing:2.5px; color:#a98cd6; margin-top:6px; text-transform:uppercase; }
+  .lb-meta .p { font-family:'Archivo Black'; font-size:22px; color:#ff6b9d; }
   .modal .m-body { padding:18px 24px 26px; text-align:center; }
   .modal .m-piece { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:4px; color:#b266ff; text-transform:uppercase; }
   .modal .m-name { font-family:'Archivo Black'; font-size:22px; margin:8px 0 4px; color:#fff; }
@@ -199,9 +240,36 @@
       <a class="btn btn-primary" href="#join">JOIN THE WAITLIST</a>
       <a class="btn btn-ghost" href="#drop">SEE DROP 001</a>
     </div>
+
+    <button class="now" id="now" hidden>
+      <span class="now-kicker">NOW SHOWING</span>
+      <span class="now-thumb" id="now-thumb"></span>
+      <span class="now-text"><span class="now-name" id="now-name"></span><span class="now-price" id="now-price"></span></span>
+    </button>
   </div>
 
   <div class="wrap">
+    <section id="lookbook" class="lookbook" hidden>
+      <div class="kicker">// Lookbook — Featured Pieces</div>
+      <h2>UP CLOSE</h2>
+      <div class="car" id="lb-car" style="margin-top:32px">
+        <div class="car-stage lb-stage">
+          <div class="car-card lb-card" id="lb-card">
+            <div class="car-face a" id="lb-a"></div>
+            <div class="car-face b" id="lb-b"></div>
+          </div>
+          <button class="car-nav prev" id="lb-prev" aria-label="Previous piece">‹</button>
+          <button class="car-nav next" id="lb-next" aria-label="Next piece">›</button>
+          <div class="car-count" id="lb-count"></div>
+        </div>
+        <div class="car-dots" id="lb-dots"></div>
+        <div class="lb-meta">
+          <div class="n" id="lb-name">—<small id="lb-spec"></small></div>
+          <div class="p" id="lb-price"></div>
+        </div>
+      </div>
+    </section>
+
     <section id="drop">
       <div class="kicker" id="drop-kicker">// Collection Nº 001 — Limited · Numbered · Never Restocked</div>
       <h2 id="drop-title">DROP 001</h2>
@@ -264,11 +332,17 @@
 <div class="modal-back" id="modal-back">
   <div class="modal" role="dialog" aria-modal="true">
     <button class="close" id="m-close" aria-label="Close">✕</button>
-    <div class="m-flipbox">
-      <div class="m-flipcard" id="m-flipcard">
-        <div class="m-face front" id="m-face-front"></div>
-        <div class="m-face back" id="m-face-back"></div>
+    <div class="car" id="m-car">
+      <div class="car-stage">
+        <div class="car-card" id="m-car-card" style="aspect-ratio:1/1.05">
+          <div class="car-face a" id="m-car-a"></div>
+          <div class="car-face b" id="m-car-b"></div>
+        </div>
+        <button class="car-nav prev" id="m-car-prev" aria-label="Previous image">‹</button>
+        <button class="car-nav next" id="m-car-next" aria-label="Next image">›</button>
+        <div class="car-count" id="m-car-count"></div>
       </div>
+      <div class="car-thumbs" id="m-car-thumbs"></div>
     </div>
     <div class="m-body">
       <button class="m-flip" id="m-flip">🔄 SEE BACK</button>
@@ -361,17 +435,197 @@ fetch('products.json?v=' + Math.floor(Date.now() / 60000))
       renderGrid(b.dataset.f);
     }));
     renderGrid('ALL');
+    buildLookbook();
+    buildNowShowing();
   })
   .catch(() => { document.getElementById('pieces').innerHTML = '<p style="color:#a98cd6">Drop loading…</p>'; });
 
-// ── Product modal with front/back flip ──
+// ── Carousel ──
+// Generalises the original front/back flip to any number of images: the
+// hidden face is loaded with the next image, then the card rotates to it,
+// so the flip animation carries over instead of being replaced by a fade.
+function makeCarousel(opts) {
+  const { card, faceA, faceB, prev, next, count, thumbs, dots, onChange } = opts;
+  let imgs = [], idx = 0, showingA = true, busy = false;
+
+  function paint() {
+    if (count) count.textContent = imgs.length > 1 ? `${idx + 1} / ${imgs.length}` : '';
+    if (prev) prev.disabled = imgs.length < 2;
+    if (next) next.disabled = imgs.length < 2;
+    const multi = imgs.length > 1;
+    if (prev) prev.style.display = multi ? 'flex' : 'none';
+    if (next) next.style.display = multi ? 'flex' : 'none';
+    if (thumbs) {
+      thumbs.innerHTML = '';
+      if (multi) imgs.forEach((src, i) => {
+        const b = document.createElement('button');
+        b.className = 'car-thumb' + (i === idx ? ' on' : '');
+        b.style.backgroundImage = `url('${src}')`;
+        b.type = 'button';
+        b.setAttribute('aria-label', `Image ${i + 1}`);
+        b.addEventListener('click', () => go(i));
+        thumbs.appendChild(b);
+      });
+    }
+    if (dots) {
+      dots.innerHTML = '';
+      if (multi) imgs.forEach((_, i) => {
+        const b = document.createElement('button');
+        b.className = 'car-dot' + (i === idx ? ' on' : '');
+        b.type = 'button';
+        b.setAttribute('aria-label', `Go to image ${i + 1}`);
+        b.addEventListener('click', () => go(i));
+        dots.appendChild(b);
+      });
+    }
+  }
+
+  function go(i, instant) {
+    if (!imgs.length) return;
+    const n = ((i % imgs.length) + imgs.length) % imgs.length;
+    if (n === idx && !instant) return;
+    if (busy && !instant) return;
+    idx = n;
+    if (instant) {
+      showingA = true;
+      card.classList.remove('flipped');
+      faceA.style.backgroundImage = `url('${imgs[idx]}')`;
+      faceB.style.backgroundImage = 'none';
+    } else {
+      const hidden = showingA ? faceB : faceA;
+      hidden.style.backgroundImage = `url('${imgs[idx]}')`;
+      card.classList.toggle('flipped', showingA);
+      showingA = !showingA;
+      busy = true;
+      setTimeout(() => { busy = false; }, 620);
+    }
+    paint();
+    if (onChange) onChange(idx);
+  }
+
+  if (prev) prev.addEventListener('click', () => go(idx - 1));
+  if (next) next.addEventListener('click', () => go(idx + 1));
+
+  // Touch swipe
+  let sx = null;
+  card.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+  card.addEventListener('touchend', e => {
+    if (sx == null) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 45) go(idx + (dx < 0 ? 1 : -1));
+    sx = null;
+  }, { passive: true });
+
+  return {
+    load(list) {
+      imgs = (list || []).filter(Boolean);
+      idx = 0;
+      go(0, true);
+      // warm the next image so the first flip is instant
+      if (imgs[1]) { const im = new Image(); im.src = imgs[1]; }
+    },
+    next: () => go(idx + 1),
+    prev: () => go(idx - 1),
+    get length() { return imgs.length; },
+    get index() { return idx; },
+  };
+}
+
+// ── Lookbook: newest pieces, one large slide at a time ──
+let lbFeatured = [];
+let lbCar = null;
+
+function buildLookbook() {
+  lbFeatured = PRODUCTS.filter(p => p.image).slice().reverse().slice(0, 6);
+  const section = document.getElementById('lookbook');
+  if (lbFeatured.length < 2) { section.hidden = true; return; }
+  section.hidden = false;
+
+  lbCar = makeCarousel({
+    card: document.getElementById('lb-card'),
+    faceA: document.getElementById('lb-a'),
+    faceB: document.getElementById('lb-b'),
+    prev: document.getElementById('lb-prev'),
+    next: document.getElementById('lb-next'),
+    count: document.getElementById('lb-count'),
+    dots: document.getElementById('lb-dots'),
+    onChange: i => {
+      const p = lbFeatured[i];
+      if (!p) return;
+      document.getElementById('lb-name').innerHTML =
+        `${p.name}<small id="lb-spec">${p.piece} · ${p.spec}</small>`;
+      document.getElementById('lb-price').textContent = '$' + p.price;
+    },
+  });
+  lbCar.load(lbFeatured.map(p => p.image));
+
+  // Clicking the slide opens that piece's full detail.
+  document.getElementById('lb-card').addEventListener('click', () => {
+    const p = lbFeatured[lbCar.index];
+    if (p) openModal(p);
+  });
+}
+
+// ── Hero strip: cycles the newest pieces, pauses on hover ──
+function buildNowShowing() {
+  const el = document.getElementById('now');
+  const list = PRODUCTS.filter(p => p.image).slice().reverse().slice(0, 5);
+  if (list.length < 2) { el.hidden = true; return; }
+  el.hidden = false;
+
+  const thumb = document.getElementById('now-thumb');
+  const name = document.getElementById('now-name');
+  const price = document.getElementById('now-price');
+  // Two independent reasons to hold: pointer hover and a hidden tab. They
+  // need separate flags — sharing one lets a visibilitychange event cancel
+  // a hover pause and start the strip moving under the user's cursor.
+  let i = 0, timer = null, hoverHold = false, hiddenHold = false;
+
+  function show(n) {
+    const p = list[n];
+    thumb.style.backgroundImage = `url('${p.image}')`;
+    name.textContent = p.name;
+    price.textContent = '$' + p.price;
+  }
+  show(0);
+  list.forEach(p => { const im = new Image(); im.src = p.image; });
+
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function advance() {
+    if (hoverHold || hiddenHold) return;
+    el.classList.add('fading');
+    setTimeout(() => { i = (i + 1) % list.length; show(i); el.classList.remove('fading'); }, 360);
+  }
+  if (!calm) timer = setInterval(advance, 4200);
+
+  el.addEventListener('mouseenter', () => { hoverHold = true; });
+  el.addEventListener('mouseleave', () => { hoverHold = false; });
+  el.addEventListener('focus', () => { hoverHold = true; });
+  el.addEventListener('blur', () => { hoverHold = false; });
+  el.addEventListener('click', () => openModal(list[i]));
+  // Don't churn in a background tab.
+  document.addEventListener('visibilitychange', () => { hiddenHold = document.hidden; });
+  el.__state = () => ({ i, hoverHold, hiddenHold, len: list.length });
+}
+
+// Every image we have for a product, in display order.
+function productImages(p) {
+  if (Array.isArray(p.images) && p.images.length) return p.images.filter(Boolean);
+  return [p.image, p.image2].filter(Boolean);
+}
+
+// ── Product modal ──
 let mProduct = null;
 const mBack = document.getElementById('modal-back');
-const flipcard = document.getElementById('m-flipcard');
-function setFlipped(flipped) {
-  flipcard.classList.toggle('flipped', flipped);
-  document.getElementById('m-flip').textContent = flipped ? '🔄 SEE FRONT' : '🔄 SEE BACK';
-}
+const mCar = makeCarousel({
+  card: document.getElementById('m-car-card'),
+  faceA: document.getElementById('m-car-a'),
+  faceB: document.getElementById('m-car-b'),
+  prev: document.getElementById('m-car-prev'),
+  next: document.getElementById('m-car-next'),
+  count: document.getElementById('m-car-count'),
+  thumbs: document.getElementById('m-car-thumbs'),
+});
 // ── Size / colour selectors ──
 // Products predate these fields, so each row hides unless the product
 // actually carries the data. Selection is remembered per product.
@@ -466,18 +720,23 @@ function openModal(p) {
   document.getElementById('m-spec').textContent = p.spec;
   document.getElementById('m-price').textContent = '$' + p.price;
   renderOptions(p);
-  document.getElementById('m-flip').style.display = p.image2 ? 'block' : 'none';
-  document.getElementById('m-face-front').style.backgroundImage = `url('${p.image}')`;
-  document.getElementById('m-face-back').style.backgroundImage = p.image2 ? `url('${p.image2}')` : 'none';
-  if (p.image2) { const pre = new Image(); pre.src = p.image2; }  // warm the cache before first flip
-  setFlipped(false);
+  const imgs = productImages(p);
+  mCar.load(imgs);
+  document.getElementById('m-flip').style.display = imgs.length > 1 ? 'block' : 'none';
+  document.getElementById('m-flip').textContent = '🔄 NEXT VIEW';
   mBack.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeModal() { mBack.classList.remove('open'); document.body.style.overflow = ''; }
 document.getElementById('m-close').addEventListener('click', closeModal);
 document.getElementById('m-cta').addEventListener('click', closeModal);
-document.getElementById('m-flip').addEventListener('click', () => setFlipped(!flipcard.classList.contains('flipped')));
+document.getElementById('m-flip').addEventListener('click', () => mCar.next());
+// Arrow keys move through images while the modal is open.
+document.addEventListener('keydown', e => {
+  if (!mBack.classList.contains('open')) return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); mCar.next(); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); mCar.prev(); }
+});
 mBack.addEventListener('click', e => { if (e.target === mBack) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 

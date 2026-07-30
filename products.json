@@ -475,7 +475,91 @@
           "name": "Navy",
           "hex": "#2b3350"
         }
-      ]
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "details": {
+        "fabric": "100% cotton",
+        "weight": "11.2 oz/yd² (380 g/m²)",
+        "thickness": "Moderate",
+        "fit": "Loose fit · raglan sleeve · lapel collar · drawcord hem",
+        "printSize": "40 × 52 cm",
+        "care": [
+          "Machine wash at 30°C, gentle cycle",
+          "Do not bleach",
+          "Tumble dry low",
+          "Iron at low temperature — avoid ironing on the print",
+          "Do not dry clean"
+        ],
+        "note": "Minor batch differences can occur in blank garment production due to variations in fabric, dye and processing."
+      },
+      "measurements": {
+        "rows": [
+          "Length",
+          "Chest",
+          "Sleeve length"
+        ],
+        "S": {
+          "Length": [
+            27.17,
+            69
+          ],
+          "Chest": [
+            22.83,
+            58
+          ],
+          "Sleeve length": [
+            30.31,
+            77
+          ]
+        },
+        "M": {
+          "Length": [
+            27.95,
+            71
+          ],
+          "Chest": [
+            23.62,
+            60
+          ],
+          "Sleeve length": [
+            30.71,
+            78
+          ]
+        },
+        "L": {
+          "Length": [
+            28.74,
+            73
+          ],
+          "Chest": [
+            24.41,
+            62
+          ],
+          "Sleeve length": [
+            31.1,
+            79
+          ]
+        },
+        "XL": {
+          "Length": [
+            29.53,
+            null
+          ],
+          "Chest": [
+            25.2,
+            null
+          ],
+          "Sleeve length": [
+            31.5,
+            null
+          ]
+        }
+      }
     }
   ]
 }

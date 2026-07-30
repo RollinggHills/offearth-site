@@ -316,7 +316,10 @@ const FILTER_GROUPS = {
 function renderGrid(filterName) {
   const grid = document.getElementById('pieces');
   const test = FILTER_GROUPS[filterName] || FILTER_GROUPS.ALL;
-  const items = PRODUCTS.map((p, i) => ({ p, i })).filter(({ p }) => test(p));
+  // Newest first: products are appended to products.json as they are added,
+  // so reversing shows the latest drop at the top. `i` stays the original
+  // catalog index, which is what the card click handler looks up.
+  const items = PRODUCTS.map((p, i) => ({ p, i })).filter(({ p }) => test(p)).reverse();
   grid.innerHTML = items.map(({ p, i }) => `
     <div class="piece" data-i="${i}">
       <div class="frame">

@@ -454,6 +454,28 @@
           "hex": "#8b8681"
         }
       ]
+    },
+    {
+      "id": "off-earth-state-of-mind-lapel",
+      "name": "'Off Earth State Of Mind'",
+      "piece": "Piece XXXVII",
+      "spec": "Sweatshirt · Printed on demand",
+      "type": "Sweatshirt",
+      "price": 75,
+      "image": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785387363/offearth_products/state-of-mind-lapel-front.png",
+      "image2": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785387365/offearth_products/state-of-mind-lapel-back.png",
+      "vendor": "tapstitch",
+      "available": false,
+      "colors": [
+        {
+          "name": "Black",
+          "hex": "#141414"
+        },
+        {
+          "name": "Navy",
+          "hex": "#2b3350"
+        }
+      ]
     }
   ]
 }

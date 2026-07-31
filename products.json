@@ -612,6 +612,32 @@
         "https://res.cloudinary.com/dhushdzfn/image/upload/v1785532687/offearth_products/im-outside-vneck-front.png",
         "https://res.cloudinary.com/dhushdzfn/image/upload/v1785532689/offearth_products/im-outside-vneck-back.png"
       ]
+    },
+    {
+      "id": "love-me-snow-washed-tee",
+      "name": "'Love Me?' Snow Washed Tee",
+      "piece": "Piece XL",
+      "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
+      "price": 49,
+      "image": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785534548/offearth_products/love-me-snow-washed-front.png",
+      "image2": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785534549/offearth_products/love-me-snow-washed-back.png",
+      "images": [
+        "https://res.cloudinary.com/dhushdzfn/image/upload/v1785534548/offearth_products/love-me-snow-washed-front.png",
+        "https://res.cloudinary.com/dhushdzfn/image/upload/v1785534549/offearth_products/love-me-snow-washed-back.png"
+      ],
+      "vendor": "tapstitch",
+      "available": false,
+      "colors": [
+        {
+          "name": "Washed Black",
+          "hex": "#2e2c2d",
+          "images": [
+            "https://res.cloudinary.com/dhushdzfn/image/upload/v1785534548/offearth_products/love-me-snow-washed-front.png",
+            "https://res.cloudinary.com/dhushdzfn/image/upload/v1785534549/offearth_products/love-me-snow-washed-back.png"
+          ]
+        }
+      ]
     }
   ]
 }

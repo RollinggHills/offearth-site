@@ -560,6 +560,42 @@
           ]
         }
       }
+    },
+    {
+      "id": "state-of-mind-piping-pants",
+      "name": "'Off Earth State Of Mind' Piping Pants",
+      "piece": "Piece XXXVIII",
+      "spec": "Pants · Printed on demand",
+      "type": "Pants",
+      "price": 69,
+      "image": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785532684/offearth_products/state-of-mind-pants-front.png",
+      "image2": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785532685/offearth_products/state-of-mind-pants-back.png",
+      "vendor": "tapstitch",
+      "available": false,
+      "colors": [
+        {
+          "name": "Black",
+          "hex": "#141414"
+        }
+      ]
+    },
+    {
+      "id": "im-outside-vneck",
+      "name": "'I'm Outside' V-Neck",
+      "piece": "Piece XXXIX",
+      "spec": "Sweatshirt · Printed on demand",
+      "type": "Sweatshirt",
+      "price": 72,
+      "image": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785532687/offearth_products/im-outside-vneck-front.png",
+      "image2": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785532689/offearth_products/im-outside-vneck-back.png",
+      "vendor": "tapstitch",
+      "available": false,
+      "colors": [
+        {
+          "name": "Sand",
+          "hex": "#c9bfa8"
+        }
+      ]
     }
   ]
 }

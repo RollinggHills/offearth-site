@@ -610,6 +610,12 @@ function buildNowShowing() {
 
 // Every image we have for a product, in display order.
 function productImages(p) {
+  // A selected colourway with its own photography wins over the default set.
+  const chosen = mChoice[p.id] && mChoice[p.id].color;
+  if (chosen && Array.isArray(p.colors)) {
+    const c = p.colors.find(x => x.name === chosen);
+    if (c && Array.isArray(c.images) && c.images.length) return c.images.filter(Boolean);
+  }
   if (Array.isArray(p.images) && p.images.length) return p.images.filter(Boolean);
   return [p.image, p.image2].filter(Boolean);
 }
@@ -653,7 +659,12 @@ function renderOptions(p) {
       b.setAttribute('role', 'radio');
       b.setAttribute('aria-label', c.name);
       b.setAttribute('aria-checked', String(c.name === mChoice[p.id].color));
-      b.addEventListener('click', () => { mChoice[p.id].color = c.name; renderOptions(p); });
+      b.addEventListener('click', () => {
+        mChoice[p.id].color = c.name;
+        renderOptions(p);
+        // A colourway can carry its own photography; swap the gallery to it.
+        if (Array.isArray(c.images) && c.images.length) mCar.load(c.images);
+      });
       colBox.appendChild(b);
     });
   }

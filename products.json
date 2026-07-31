@@ -593,8 +593,24 @@
       "colors": [
         {
           "name": "Sand",
-          "hex": "#c9bfa8"
+          "hex": "#c9bfa8",
+          "images": [
+            "https://res.cloudinary.com/dhushdzfn/image/upload/v1785532687/offearth_products/im-outside-vneck-front.png",
+            "https://res.cloudinary.com/dhushdzfn/image/upload/v1785532689/offearth_products/im-outside-vneck-back.png"
+          ]
+        },
+        {
+          "name": "Grey",
+          "hex": "#a9abac",
+          "images": [
+            "https://res.cloudinary.com/dhushdzfn/image/upload/v1785533576/offearth_products/im-outside-vneck-grey-front.png",
+            "https://res.cloudinary.com/dhushdzfn/image/upload/v1785533577/offearth_products/im-outside-vneck-grey-back.png"
+          ]
         }
+      ],
+      "images": [
+        "https://res.cloudinary.com/dhushdzfn/image/upload/v1785532687/offearth_products/im-outside-vneck-front.png",
+        "https://res.cloudinary.com/dhushdzfn/image/upload/v1785532689/offearth_products/im-outside-vneck-back.png"
       ]
     }
   ]

@@ -638,6 +638,32 @@
           ]
         }
       ]
+    },
+    {
+      "id": "im-outside-vintage-hoodie",
+      "name": "'I'm Outside' Vintage Wash Hoodie",
+      "piece": "Piece XLI",
+      "spec": "Hoodie · Printed on demand",
+      "type": "Hoodie",
+      "price": 89,
+      "image": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785544617/offearth_products/im-outside-hoodie-front.png",
+      "image2": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785544619/offearth_products/im-outside-hoodie-back.png",
+      "images": [
+        "https://res.cloudinary.com/dhushdzfn/image/upload/v1785544617/offearth_products/im-outside-hoodie-front.png",
+        "https://res.cloudinary.com/dhushdzfn/image/upload/v1785544619/offearth_products/im-outside-hoodie-back.png"
+      ],
+      "vendor": "tapstitch",
+      "available": false,
+      "colors": [
+        {
+          "name": "Washed Black",
+          "hex": "#26242a",
+          "images": [
+            "https://res.cloudinary.com/dhushdzfn/image/upload/v1785544617/offearth_products/im-outside-hoodie-front.png",
+            "https://res.cloudinary.com/dhushdzfn/image/upload/v1785544619/offearth_products/im-outside-hoodie-back.png"
+          ]
+        }
+      ]
     }
   ]
 }

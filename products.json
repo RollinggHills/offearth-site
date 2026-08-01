@@ -611,7 +611,8 @@
       "images": [
         "https://res.cloudinary.com/dhushdzfn/image/upload/v1785532687/offearth_products/im-outside-vneck-front.png",
         "https://res.cloudinary.com/dhushdzfn/image/upload/v1785532689/offearth_products/im-outside-vneck-back.png"
-      ]
+      ],
+      "collection": "outside"
     },
     {
       "id": "love-me-snow-washed-tee",
@@ -637,7 +638,8 @@
             "https://res.cloudinary.com/dhushdzfn/image/upload/v1785534549/offearth_products/love-me-snow-washed-back.png"
           ]
         }
-      ]
+      ],
+      "collection": "outside"
     },
     {
       "id": "im-outside-vintage-hoodie",
@@ -663,7 +665,15 @@
             "https://res.cloudinary.com/dhushdzfn/image/upload/v1785544619/offearth_products/im-outside-hoodie-back.png"
           ]
         }
-      ]
+      ],
+      "collection": "outside"
+    }
+  ],
+  "collections": [
+    {
+      "id": "outside",
+      "name": "OUTSIDE",
+      "tagline": "I'm outside because I'm lonely — three pieces, one confession."
     }
   ]
 }

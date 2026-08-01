@@ -177,6 +177,12 @@
   .now.fading .now-thumb, .now.fading .now-text { opacity:0; }
   @media (max-width:520px) { .now-kicker { display:none; } }
 
+  /* Collections */
+  .coll { padding:64px 0 8px; }
+  .coll h2 { margin-top:2px; }
+  .coll-tag { margin:14px 0 6px; color:#cbb3ee; font-size:14px; letter-spacing:1px; max-width:640px; line-height:1.7; }
+  .coll .pieces { margin-top:28px; }
+
   /* Lookbook */
   .lookbook { border-top:1px solid rgba(255,255,255,.12); }
   .lb-stage { border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.16); }
@@ -269,6 +275,10 @@
         </div>
       </div>
     </section>
+
+    <!-- Collections render here from products.json — no code edit needed
+         to add one. See "collections" and per-product "collection". -->
+    <div id="collections"></div>
 
     <section id="drop">
       <div class="kicker" id="drop-kicker">// Collection Nº 001 — Limited · Numbered · Never Restocked</div>
@@ -379,6 +389,7 @@
 <script>
 // ── Catalog: the site renders whatever products.json contains ──
 let PRODUCTS = [];
+let CATALOG = {};
 const FILTER_GROUPS = {
   'ALL': () => true,
   'TEES': p => /t-shirt|sweatshirt|tank/i.test(p.type || ''),
@@ -387,14 +398,8 @@ const FILTER_GROUPS = {
   'MORE': p => /accessory|women/i.test(p.type || ''),
 };
 
-function renderGrid(filterName) {
-  const grid = document.getElementById('pieces');
-  const test = FILTER_GROUPS[filterName] || FILTER_GROUPS.ALL;
-  // Newest first: products are appended to products.json as they are added,
-  // so reversing shows the latest drop at the top. `i` stays the original
-  // catalog index, which is what the card click handler looks up.
-  const items = PRODUCTS.map((p, i) => ({ p, i })).filter(({ p }) => test(p)).reverse();
-  grid.innerHTML = items.map(({ p, i }) => `
+function cardHTML(p, i) {
+  return `
     <div class="piece" data-i="${i}">
       <div class="frame">
         ${p.available ? '' : '<div class="badge">COMING SOON</div>'}
@@ -406,8 +411,11 @@ function renderGrid(filterName) {
         <div class="t">${p.name}<small>${p.spec}</small></div>
         <div class="price">$${p.price}</div>
       </div>
-    </div>`).join('');
-  grid.querySelectorAll('.piece').forEach(el => {
+    </div>`;
+}
+
+function wireCards(container) {
+  container.querySelectorAll('.piece').forEach(el => {
     const p = PRODUCTS[+el.dataset.i];
     el.addEventListener('click', () => openModal(p));
     // fun: hover shows the back of the garment
@@ -419,6 +427,43 @@ function renderGrid(filterName) {
   });
 }
 
+function renderGrid(filterName) {
+  const grid = document.getElementById('pieces');
+  const test = FILTER_GROUPS[filterName] || FILTER_GROUPS.ALL;
+  // Newest first: products are appended to products.json as they are added,
+  // so reversing shows the latest drop at the top. `i` stays the original
+  // catalog index, which is what the card click handler looks up.
+  const items = PRODUCTS.map((p, i) => ({ p, i })).filter(({ p }) => test(p)).reverse();
+  grid.innerHTML = items.map(({ p, i }) => cardHTML(p, i)).join('');
+  wireCards(grid);
+}
+
+// ── Collections ──
+// Entirely data-driven: a "collections" array in products.json plus a
+// per-product "collection" id. A collection renders only when at least
+// two of its pieces exist, so a half-tagged drop never shows a stub.
+function buildCollections() {
+  const host = document.getElementById('collections');
+  const defs = Array.isArray(CATALOG.collections) ? CATALOG.collections : [];
+  host.innerHTML = '';
+  defs.forEach(c => {
+    const items = PRODUCTS.map((p, i) => ({ p, i }))
+      .filter(({ p }) => p.collection === c.id && p.image)
+      .reverse();
+    if (items.length < 2) return;
+    const sec = document.createElement('section');
+    sec.className = 'coll';
+    sec.id = 'coll-' + c.id;
+    sec.innerHTML = `
+      <div class="kicker">// Collection — ${c.name}</div>
+      <h2>${c.name}</h2>
+      ${c.tagline ? `<p class="coll-tag">${c.tagline}</p>` : ''}
+      <div class="pieces">${items.map(({ p, i }) => cardHTML(p, i)).join('')}</div>`;
+    host.appendChild(sec);
+    wireCards(sec);
+  });
+}
+
 // Cache-bust per minute: GitHub Pages caches assets, so without this a
 // returning visitor keeps seeing the old catalog after a product is added.
 fetch('products.json?v=' + Math.floor(Date.now() / 60000))
@@ -426,6 +471,7 @@ fetch('products.json?v=' + Math.floor(Date.now() / 60000))
   .then(cat => {
     document.getElementById('drop-title').textContent = 'DROP ' + cat.drop.number + ' — ' + cat.drop.name;
     PRODUCTS = cat.products;
+    CATALOG = cat;
     const bar = document.getElementById('filters');
     bar.innerHTML = Object.keys(FILTER_GROUPS).map((f, i) =>
       `<button class="fbtn${i === 0 ? ' active' : ''}" data-f="${f}">${f}</button>`).join('');
@@ -435,6 +481,7 @@ fetch('products.json?v=' + Math.floor(Date.now() / 60000))
       renderGrid(b.dataset.f);
     }));
     renderGrid('ALL');
+    buildCollections();
     buildLookbook();
     buildNowShowing();
   })

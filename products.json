@@ -453,7 +453,8 @@
           "name": "Washed Grey",
           "hex": "#8b8681"
         }
-      ]
+      ],
+      "collection": "dead-sun"
     },
     {
       "id": "off-earth-state-of-mind-lapel",
@@ -667,6 +668,33 @@
         }
       ],
       "collection": "outside"
+    },
+    {
+      "id": "dead-sun-raw-hem-tee",
+      "name": "'DEAD SUN' Raw-Hem Tee",
+      "piece": "Piece XLII",
+      "spec": "T-Shirt · Printed on demand",
+      "type": "T-Shirt",
+      "price": 45,
+      "image": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785650931/offearth_products/dead-sun-raw-hem-front.png",
+      "image2": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785650932/offearth_products/dead-sun-raw-hem-back.png",
+      "images": [
+        "https://res.cloudinary.com/dhushdzfn/image/upload/v1785650931/offearth_products/dead-sun-raw-hem-front.png",
+        "https://res.cloudinary.com/dhushdzfn/image/upload/v1785650932/offearth_products/dead-sun-raw-hem-back.png"
+      ],
+      "vendor": "tapstitch",
+      "available": false,
+      "colors": [
+        {
+          "name": "Washed Black",
+          "hex": "#2e2c2d",
+          "images": [
+            "https://res.cloudinary.com/dhushdzfn/image/upload/v1785650931/offearth_products/dead-sun-raw-hem-front.png",
+            "https://res.cloudinary.com/dhushdzfn/image/upload/v1785650932/offearth_products/dead-sun-raw-hem-back.png"
+          ]
+        }
+      ],
+      "collection": "dead-sun"
     }
   ],
   "collections": [
@@ -674,6 +702,11 @@
       "id": "outside",
       "name": "OUTSIDE",
       "tagline": "I'm outside because I'm lonely — three pieces, one confession."
+    },
+    {
+      "id": "dead-sun",
+      "name": "DEAD SUN",
+      "tagline": "Bone on burnt orange. The sun's dead — we're still here."
     }
   ]
 }

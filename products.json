@@ -316,7 +316,12 @@
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/7794a40b5ed14e49abad667f9b406b30.png",
       "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/9b920586625b42458251a5878616308e.png",
       "vendor": "tapstitch",
-      "available": false
+      "available": false,
+      "images": [
+        "https://files.tapstitch.com/popshowroom/material/custom_printing/7794a40b5ed14e49abad667f9b406b30.png",
+        "https://files.tapstitch.com/popshowroom/material/custom_printing/9b920586625b42458251a5878616308e.png",
+        "https://res.cloudinary.com/dhushdzfn/image/upload/v1785700816/offearth_worn/worn-astro-dex.jpg"
+      ]
     },
     {
       "id": "aliens-off-earth-9312",
@@ -328,7 +333,12 @@
       "image": "https://files.tapstitch.com/popshowroom/material/custom_printing/b37ef818dca04d2ab8ca1110ea658ada.png",
       "image2": "https://files.tapstitch.com/popshowroom/material/custom_printing/d547b97b4e5943ee84239d349506d46f.png",
       "vendor": "tapstitch",
-      "available": false
+      "available": false,
+      "images": [
+        "https://files.tapstitch.com/popshowroom/material/custom_printing/b37ef818dca04d2ab8ca1110ea658ada.png",
+        "https://files.tapstitch.com/popshowroom/material/custom_printing/d547b97b4e5943ee84239d349506d46f.png",
+        "https://res.cloudinary.com/dhushdzfn/image/upload/v1785700817/offearth_worn/worn-aliens-off-earth.jpg"
+      ]
     },
     {
       "id": "d-stars-1",
@@ -707,6 +717,18 @@
       "id": "dead-sun",
       "name": "DEAD SUN",
       "tagline": "Bone on burnt orange. The sun's dead — we're still here."
+    }
+  ],
+  "worn": [
+    {
+      "image": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785700817/offearth_worn/worn-aliens-off-earth.jpg",
+      "productId": "aliens-off-earth-9312",
+      "caption": "Aliens Off Earth 👽 — black, with the beanie"
+    },
+    {
+      "image": "https://res.cloudinary.com/dhushdzfn/image/upload/v1785700816/offearth_worn/worn-astro-dex.jpg",
+      "productId": "2019-420-tee-astro-dex",
+      "caption": "Astro Dex, outside where it belongs"
     }
   ]
 }

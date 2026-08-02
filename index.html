@@ -183,6 +183,13 @@
   .coll-tag { margin:14px 0 6px; color:#cbb3ee; font-size:14px; letter-spacing:1px; max-width:640px; line-height:1.7; }
   .coll .pieces { margin-top:28px; }
 
+  /* Worn — real photos, real people */
+  .worn-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:24px; margin-top:32px; }
+  .worn-card { border:1px solid rgba(255,255,255,.18); border-radius:12px; overflow:hidden; cursor:pointer; background:rgba(255,255,255,.04); transition:transform .25s ease, border-color .25s, box-shadow .25s; }
+  .worn-card:hover { transform:translateY(-4px); border-color:#ff8e53; box-shadow:0 18px 48px rgba(255,107,157,.25); }
+  .worn-card img { display:block; width:100%; height:auto; }
+  .worn-card .cap { padding:13px 16px; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:2px; color:#cbb3ee; text-transform:uppercase; }
+
   /* Lookbook */
   .lookbook { border-top:1px solid rgba(255,255,255,.12); }
   .lb-stage { border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.16); }
@@ -279,6 +286,12 @@
     <!-- Collections render here from products.json — no code edit needed
          to add one. See "collections" and per-product "collection". -->
     <div id="collections"></div>
+
+    <section id="worn" hidden>
+      <div class="kicker">// Lookbook — On Real Ones</div>
+      <h2>WORN OFF EARTH</h2>
+      <div class="worn-grid" id="worn-grid"></div>
+    </section>
 
     <section id="drop">
       <div class="kicker" id="drop-kicker">// Collection Nº 001 — Limited · Numbered · Never Restocked</div>
@@ -482,6 +495,7 @@ fetch('products.json?v=' + Math.floor(Date.now() / 60000))
     }));
     renderGrid('ALL');
     buildCollections();
+    buildWorn();
     buildLookbook();
     buildNowShowing();
   })
@@ -576,6 +590,27 @@ function makeCarousel(opts) {
     get length() { return imgs.length; },
     get index() { return idx; },
   };
+}
+
+// ── Worn: real photos of real garments, data-driven from products.json ──
+function buildWorn() {
+  const sec = document.getElementById('worn');
+  const shots = Array.isArray(CATALOG.worn) ? CATALOG.worn.filter(w => w.image) : [];
+  if (!shots.length) { sec.hidden = true; return; }
+  sec.hidden = false;
+  const grid = document.getElementById('worn-grid');
+  grid.innerHTML = shots.map((w, n) => `
+    <figure class="worn-card" data-n="${n}">
+      <img src="${w.image}" alt="${w.caption || 'OFF EARTH, worn'}" loading="lazy">
+      ${w.caption ? `<figcaption class="cap">${w.caption}</figcaption>` : ''}
+    </figure>`).join('');
+  grid.querySelectorAll('.worn-card').forEach(el => {
+    const w = shots[+el.dataset.n];
+    el.addEventListener('click', () => {
+      const p = PRODUCTS.find(x => x.id === w.productId);
+      if (p) openModal(p);
+    });
+  });
 }
 
 // ── Lookbook: newest pieces, one large slide at a time ──

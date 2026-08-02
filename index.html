@@ -183,6 +183,9 @@
   .coll-tag { margin:14px 0 6px; color:#cbb3ee; font-size:14px; letter-spacing:1px; max-width:640px; line-height:1.7; }
   .coll .pieces { margin-top:28px; }
 
+  /* Stage: mockups multiply over the sweep so white backgrounds vanish */
+  .piece .canvas, .car-face { background-blend-mode: multiply; box-shadow: inset 0 -22px 44px rgba(38,20,70,.14); }
+
   /* Worn — real photos, real people */
   .worn-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:24px; margin-top:32px; }
   .worn-card { border:1px solid rgba(255,255,255,.18); border-radius:12px; overflow:hidden; cursor:pointer; background:rgba(255,255,255,.04); transition:transform .25s ease, border-color .25s, box-shadow .25s; }
@@ -288,8 +291,7 @@
     <div id="collections"></div>
 
     <section id="worn" hidden>
-      <div class="kicker">// Lookbook — On Real Ones</div>
-      <h2>WORN OFF EARTH</h2>
+      <div class="kicker">// On Real Ones</div>
       <div class="worn-grid" id="worn-grid"></div>
     </section>
 
@@ -411,12 +413,21 @@ const FILTER_GROUPS = {
   'MORE': p => /accessory|women/i.test(p.type || ''),
 };
 
+// Mockups arrive as garments on flat white. Multiply-blending them over a
+// studio-sweep gradient turns the white into the stage itself, so pieces
+// float with depth instead of sitting in white rectangles. Real photos
+// (the worn shots) must never be blended — they aren't white-backed.
+const STAGE = "radial-gradient(120% 90% at 50% 28%, #f7f4fb 0%, #eae3f5 55%, #cfc3e6 100%)";
+function stagedBG(src) {
+  return src && src.includes('offearth_worn') ? `url('${src}')` : `url('${src}'), ${STAGE}`;
+}
+
 function cardHTML(p, i) {
   return `
     <div class="piece" data-i="${i}">
       <div class="frame">
         ${p.available ? '' : '<div class="badge">COMING SOON</div>'}
-        <div class="canvas" style="${p.image ? `background-image:url('${p.image}')` : `background:${p.gradient}`}">
+        <div class="canvas" style="${p.image ? `background-image:${stagedBG(p.image)}` : `background:${p.gradient}`}">
           ${p.image ? '' : `<span>${p.piece.toUpperCase()}</span>`}
         </div>
       </div>
@@ -434,8 +445,8 @@ function wireCards(container) {
     // fun: hover shows the back of the garment
     if (p.image2) {
       const cv = el.querySelector('.canvas');
-      el.addEventListener('mouseenter', () => { cv.style.backgroundImage = `url('${p.image2}')`; });
-      el.addEventListener('mouseleave', () => { cv.style.backgroundImage = `url('${p.image}')`; });
+      el.addEventListener('mouseenter', () => { cv.style.backgroundImage = stagedBG(p.image2); });
+      el.addEventListener('mouseleave', () => { cv.style.backgroundImage = stagedBG(p.image); });
     }
   });
 }
@@ -550,11 +561,11 @@ function makeCarousel(opts) {
     if (instant) {
       showingA = true;
       card.classList.remove('flipped');
-      faceA.style.backgroundImage = `url('${imgs[idx]}')`;
+      faceA.style.backgroundImage = stagedBG(imgs[idx]);
       faceB.style.backgroundImage = 'none';
     } else {
       const hidden = showingA ? faceB : faceA;
-      hidden.style.backgroundImage = `url('${imgs[idx]}')`;
+      hidden.style.backgroundImage = stagedBG(imgs[idx]);
       card.classList.toggle('flipped', showingA);
       showingA = !showingA;
       busy = true;
@@ -1050,7 +1061,7 @@ setInterval(draw, 55);
       const r = hovCard.getBoundingClientRect();
       const px = (mx - r.left) / r.width - 0.5;
       const py = (my - r.top) / r.height - 0.5;
-      hovFrame.style.transform = `perspective(900px) rotateY(${px * 7}deg) rotateX(${-py * 7}deg) translateZ(6px)`;
+      hovFrame.style.transform = `perspective(900px) rotateY(${px * 9}deg) rotateX(${-py * 9}deg) translateZ(12px)`;
       moving = true;
     }
 
